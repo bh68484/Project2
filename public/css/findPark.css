@@ -1,0 +1,21 @@
+#parkPic {
+  height: 200px;
+  width: 250px;
+  padding-bottom: 15px;
+}
+
+#parkButton {
+  position: relative;
+  top: 30px;
+}
+
+#goParkBtn {
+  position: relative;
+  top: 60px;
+  left: 98px;
+}
+
+#parkList {
+  position: relative;
+  top: 20px;
+}
