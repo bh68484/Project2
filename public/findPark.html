@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FaceBark - Find a Park</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <!-- <link href="./public/css/style.css" rel="stylesheet"> -->
+    <link href="css/findPark.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- //header -->
+    <nav class="light-green lighten-1" role="navigation">
+        <div class="nav-wrapper container">
+            <a id="logo-container" href="#" class="brand-logo">FaceBark</a>
+            <ul class="right hide-on-med-and-down">
+                <li>
+                    <a href="home.html">Home</a>
+                </li>
+                <li>
+                    <a class="modal-trigger" href="#modal1">Add a Dog</a>
+                </li>
+                <li>
+                    <a href="findPark.html">Find a Park</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- main body -->
+    <div class="container">
+        <div class="section no-pad-bot" id="index-banner">
+            <h2 class="header center orange-text">Pick a Park</h2>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row" data-target="modal1" href="#modal1">
+            <ul class="collection" id="parkRow">
+                <li class="collection-item">
+                    <img src="./images/park1.jpg" alt="park_pic" class="col s4" id="parkPic">
+                    <h2 id="parkTitle" class="col s3">Dorothea Dix Park</h2>
+                    <div class="container center-align col s3" id="parkList">
+                        <h5>Dog-Park</h5>
+                        <h5>Bathrooms</h5>
+                        <h5>Playground</h5>
+                    </div>
+                    <button class="waves-effect waves-light btn-large modal-trigger right-align col s2 offset-s1" id="parkButton" data-target="modal1"
+                        href="#modal1">Go To Park</button>
+                    <!-- <button class="waves-effect waves-light btn-large right-align modal-trigger" id="goParkBtn" data-target="modal2" href="#modal2">Go To Park</button> -->
+
+                </li>
+            </ul>
+        </div>
+        <div class="row" data-target="modal1" href="#modal1">
+            <ul class="collection" id="parkRow">
+                <li class="collection-item">
+                    <img src="./images/park2.jpg" alt="park_pic" class="col s4" id="parkPic">
+                    <h2 id="parkTitle" class="col s3">Pullen Park</h2>
+                    <div class="container center-align col s3" id="parkList">
+                        <h5>Dog-Park</h5>
+                        <h5>Bathrooms</h5>
+                        <h5>Playground</h5>
+                    </div>
+                    <button class="waves-effect waves-light btn-large modal-trigger right-align col s2 offset-s1" id="parkButton" data-target="modal1"
+                        href="#modal1">Go To Park</button>
+                    <!-- <button class="waves-effect waves-light btn-large right-align modal-trigger" id="goParkBtn" data-target="modal2" href="#modal2">Go To Park</button> -->
+
+                </li>
+            </ul>
+        </div>
+        <div class="row" data-target="modal1" href="#modal1">
+            <ul class="collection" id="parkRow">
+                <li class="collection-item">
+                    <img src="./images/park3.jpg" alt="park_pic" class="col s4" id="parkPic">
+                    <h2 id="parkTitle" class="col s3">Lake Johnson</h2>
+                    <div class="container center-align col s3" id="parkList">
+                        <h5>Dog-Park</h5>
+                        <h5>Bathrooms</h5>
+                        <h5>Playground</h5>
+                    </div>
+                    <button class="waves-effect waves-light btn-large modal-trigger right-align col s2 offset-s1" id="parkButton" data-target="modal1"
+                        href="#modal1">Go To Park</button>
+                    <!-- <button class="waves-effect waves-light btn-large right-align modal-trigger" id="goParkBtn" data-target="modal2" href="#modal2">Go To Park</button> -->
+
+                </li>
+            </ul>
+        </div>
+
+        <!-- Modal Structure -->
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <h4 class="center-align">Selected Park</h4>
+                <h5 class="center-align">Dogs at this Park</h5>
+                <br>
+                <br>
+                <div class="container center-align">
+                    <div class="chip">
+                        <img src="./images/dog1.jpg" alt="Dog Chip"> Harris
+                    </div>
+                    <div class="chip">
+                        <img src="./images/dog2.jpg" alt="Dog Chip"> Rusty
+                    </div>
+                    <div class="chip">
+                        <img src="./images/dog3.jpg" alt="Dog Chip"> Chewie
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn waves-effect waves-light" type="submit" name="action">Let's Go!
+                    <i class="material-icons right">nature_people</i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <h4 class="center-align">Enjoy Your Day at the Park!</h4>
+            <h6 class="center-align">Your Dog's Tail Just Started Wagging!</h6>
+            <br>
+            <br>
+        </div>
+    </div>
+
+
+</body>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js "></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js "></script>
+<!-- <script src="./starter-template/js/init.js "></script> -->
+<script src="./starter-template/js/materialize.min.js "></script>
+<!-- <script src="./starter-template/js/materialize.js "></script> -->
+<script src="./js/faceBark.js"></script>
+
+</html>
