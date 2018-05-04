@@ -5,6 +5,13 @@
  *
  * Made By MaterializeCSS.com
  */
+/* body {
+  z-index: 4;
+  background-image: url("../images/pawPrints.png");
+  background-repeat: no-repeat;
+  background-position-y: 170px;
+  background-position-x: 600px;
+} */
 
 .icon-block {
   padding: 0 15px;
@@ -43,4 +50,11 @@
 
 .modal-form-row {
   margin-bottom: 0px;
+}
+
+#dogGif {
+  z-index: -1;
+  position: absolute;
+  right: 200px;
+  top: 10px;
 }
