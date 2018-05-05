@@ -62,8 +62,8 @@
                                         <label for="first_name">Pupper's Name</label>
                                     </div>
                                     <div class="input-field col s6">
-                                        <input placeholder="Who Owns this Pupper?" id="owner-name" type="text" class="validate">
-                                        <label for="last_name">Owner's Name</label>
+                                        <input placeholder="Breed" id="dog-breed" type="text" class="validate">
+                                        <label for="first_name">Breed</label>
                                     </div>
                                 </div>
                             </form>
@@ -71,15 +71,20 @@
                         <div class="row">
                             <form class="col s12">
                                 <div class="row">
-                                    <div class="input-field col s6">
-                                        <input placeholder="Breed" id="dog-breed" type="text" class="validate">
-                                        <label for="first_name">Breed</label>
+                                    <div class="file-field input-field col s6">
+                                        <div class="btn">
+                                            <span>File</span>
+                                            <input type="file">
+                                        </div>
+                                        <div class="file-path-wrapper">
+                                            <input class="file-path validate" type="text" id="dogPic" placeholder="Upload a Pupper Pic">
+                                        </div>
                                     </div>
                                     <div class="input-field col s6">
-                                        <select>
+                                        <select id="gender">
                                             <option value="" disabled selected>Choose a Gender</option>
-                                            <option value="1">Male</option>
-                                            <option value="2">Female</option>
+                                            <option value="0">Male</option>
+                                            <option value="1">Female</option>
                                         </select>
                                         <label>Select Gender</label>
                                     </div>
@@ -97,14 +102,9 @@
                                     <input type="checkbox" id="otherDogs" />
                                     <span>Good with Other Dogs?</span>
                                 </label>
-                                <div class="file-field input-field col s6">
-                                    <div class="btn">
-                                        <span>File</span>
-                                        <input type="file">
-                                    </div>
-                                    <div class="file-path-wrapper">
-                                        <input class="file-path validate" type="text" placeholder="Upload a Pupper Pic">
-                                    </div>
+                                <div class="input-field col s6">
+                                    <input placeholder="Who Owns this Pupper?" id="owner-name" type="text" class="validate">
+                                    <label for="last_name">Owner's Name</label>
                                 </div>
                             </form>
                         </div>
@@ -112,14 +112,25 @@
                             <form class="col s12" action="#">
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <textarea id="textarea2" class="materialize-textarea" data-length="120"></textarea>
+                                        <textarea id="textarea2" class="materialize-textarea" id="dogComment" data-length="120"></textarea>
                                         <label for="textarea2">Tell Us About Your Pupper!</label>
                                     </div>
                                 </div>
                             </form>
                         </div>
+                        <div class="row">
+                            <h5>Create a Profile</h5>
+                            <div class="input-field col s6">
+                                <input id="email" type="email" class="validate">
+                                <label for="email">Email</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input id="password" type="password" class="validate">
+                                <label for="password">Create a Password</label>
+                            </div>
+                        </div>
                         <div class="modal-footer">
-                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Submit</a>
+                            <a href="#!" class="modal-close waves-effect waves-green btn-flat" id="submit">Submit</a>
                         </div>
                     </div>
 
