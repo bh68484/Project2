@@ -7,6 +7,7 @@
 
     //now you can open modal from code
     $("#modal1").modal("open");
+     $("#modal1").modal("show");
 
     //or by click on trigger
     $(".trigger-modal").modal();
