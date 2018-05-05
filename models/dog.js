@@ -5,7 +5,7 @@ module.exports = function(sequelize, DataTypes) {
     //adding here//
     picture: DataTypes.STRING,
     gender: {
-      DataTypes: BOOLEAN,
+      type: DataTypes.BOOLEAN,
       notNull: true
     },
     owner: DataTypes.STRING,
