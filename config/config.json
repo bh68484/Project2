@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": null,
-    "database": "database_development",
+    "password": "Hawkeye321",
+    "database": "parks_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },

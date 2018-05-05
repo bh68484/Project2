@@ -13,6 +13,10 @@
     <!--Import materialize.css-->
     <!-- <link href="./public/css/style.css" rel="stylesheet"> -->
     <link href="css/searchPark.css" rel="stylesheet">
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- parkSearch.js -->
+    <script type="text/javascript" src="js/parkSearch.js"></script>
 </head>
 
 <body>
@@ -66,12 +70,12 @@
                                 <input id="dogPark" type="checkbox" />
                                 <span>Dog-Park</span>
                             </label>
-                            <label class="col s4" for="playground">
-                                <input id="playground" type="checkbox" />
-                                <span>Playground</span>
+                            <label class="col s4" for="greenway">
+                                <input id="greenway" type="checkbox" />
+                                <span>Greenway Access</span>
                             </label>
-                            <label class="col s4" for="bathrooms">
-                                <input id="bathrooms" type="checkbox" />
+                            <label class="col s4" for="restrooms">
+                                <input id="restrooms" type="checkbox" />
                                 <span>Bathrooms</span>
                             </label>
                         </p>
@@ -84,18 +88,30 @@
                                 <input id="hasDogs" type="checkbox" />
                                 <span>Has Dogs There Now</span>
                             </label>
-                            <label class="col s4" for="noDogs">
-                                <input id="noDogs" type="checkbox" />
-                                <span>Has No Dogs</span>
+                            <label class="col s4" for="field">
+                                <input id="field" type="checkbox" />
+                                <span>Multipurpose Field</span>
                             </label>
-                            <label class="col s4" for="walkingTrails">
-                                <input id="walkingTrails" type="checkbox" />
+                            <label class="col s4" for="trails">
+                                <input id="trails" type="checkbox" />
                                 <span>Walking Trails</span>
                             </label>
                         </p>
+                        <!-- <a id="parkSearch" class="waves-effect waves-light btn modal-trigger" href="#modal1">Search</a> -->
+                        <!-- <button id="parkSearch" cla>Search</button> -->
+                        <!-- <button id="searchPark" onclick="window.location='searchPark.html';" class="waves-effect waves-light btn-large center-align col s2 offset-s1">
+               <a id="searchPark" href="searchPark.html" style="color:white">Search Instead</a>
+           </button> -->
+
+                        <!-- <button id="parkSearch" class="waves-effect waves-light btn-large center-align col s2 offset-s1 btn modal-trigger" data-target="modal1">Search</button> -->
+
+                         <a id="parkSearch" class="waves-effect waves-light btn modal-trigger" href="#modal1">Search</a>
+
                     </form>
                 </div>
+                
             </div>
+
             <h5 class="center-align col s1" id="or">Or</h5>
             <div class="right-align col s5 offset-s2" id="mapContainer">
                 <div>
@@ -105,6 +121,11 @@
                 </div>
             </div>
         </div>
+    </div>
+    
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+      
     </div>
 
     <footer class="page-footer light-green lighten-1" style="background-image:url(https://images.clipartuse.com/44e37483d02ea0cfe67a9a5f035c485c_grass-clipart-transparent-grass-clipart-free-clip-art-imagespng-_3788-974.png)">
