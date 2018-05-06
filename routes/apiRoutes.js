@@ -23,13 +23,15 @@ module.exports = function(app) {
 
   //   var parkArr = ['dogPark'];
 
-  //   db.Parks.findAll({
-  //     parkArr[0]: 'yes'
-  //   }).then(function(dbParks) {
-  //     res.json(dbParks);
-  //     console.log(dbParks.dataValues);
-  //   });
-  // });
+
+    db.Parks.findAll({
+      'parkArr[0]': 'yes'
+    }).then(function(dbParks) {
+      res.json(dbParks);
+      console.log(dbParks.dataValues);
+    });
+  });
+
 
   //Posting new profiles through Dogs.js model
   app.post("/api/newDog", function(req, res) {
