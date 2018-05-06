@@ -17,6 +17,16 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/api/dogs/:id", function(req, res) {
+    db.Dog.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbDog) {
+      res.json(dbDog);
+    });
+  });
+
   app.post("/api/parkSearch", function(req, res) {
     console.log("called");
     console.log(req.body.data);
