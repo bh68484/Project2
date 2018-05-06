@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "root",
-    "password": "Hawkeye321",
-    "database": "parks_db",
-    "host": "127.0.0.1",
+    "username": "etphbijl8ovifekg",
+    "password": "llld3bh8c0mm9kps",
+    "database": "heke1wnlhzqpa3w4",
+    "host": "ocvwlym0zv3tcn68.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
   },
   "test": {
