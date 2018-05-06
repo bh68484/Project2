@@ -23,7 +23,19 @@ module.exports = function(app) {
 
   //   var parkArr = ['dogPark'];
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+  //   db.Parks.findAll({
+  //     parkArr[0]: 'yes'
+  //   }).then(function(dbParks) {
+  //     res.json(dbParks);
+  //     console.log(dbParks.dataValues);
+  //   });
+  // });
+=======
+=======
 
+>>>>>>> 92aca07fac288035a64228478090dc8e6bbcec8e
     db.Parks.findAll({
       'parkArr[0]': 'yes'
     }).then(function(dbParks) {
@@ -31,7 +43,11 @@ module.exports = function(app) {
       console.log(dbParks.dataValues);
     });
   });
+<<<<<<< HEAD
+>>>>>>> 8236b91d120b1f30aab375a0e225ede1356f4908
+=======
 
+>>>>>>> 92aca07fac288035a64228478090dc8e6bbcec8e
 
   //Posting new profiles through Dogs.js model
   app.post("/api/newDog", function(req, res) {
