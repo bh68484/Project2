@@ -32,7 +32,7 @@ module.exports = function(app) {
   });
 
   //Posting new profiles through Dogs.js model
-  app.post("/api/new", function(req, res) {
+  app.post("/api/newDog", function(req, res) {
     console.log("New Profile:  ");
     console.log(req.body);
     Dog.create({
