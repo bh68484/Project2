@@ -17,19 +17,19 @@ module.exports = function(app) {
     });
   });
 
-  app.post("/api/parkSearch", function(req, res) {
-    console.log("called");
-    console.log(req.body.data);
+  // app.post("/api/parkSearch", function(req, res) {
+  //   console.log("called");
+  //   console.log(req.body.data);
 
-    var parkArr = ['dogPark'];
+  //   var parkArr = ['dogPark'];
 
-    db.Parks.findAll({
-      parkArr[0]: 'yes'
-    }).then(function(dbParks) {
-      res.json(dbParks);
-      console.log(dbParks.dataValues);
-    });
-  });
+  //   db.Parks.findAll({
+  //     parkArr[0]: 'yes'
+  //   }).then(function(dbParks) {
+  //     res.json(dbParks);
+  //     console.log(dbParks.dataValues);
+  //   });
+  // });
 
   //Posting new profiles through Dogs.js model
   app.post("/api/newDog", function(req, res) {
