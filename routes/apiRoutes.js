@@ -35,12 +35,6 @@ module.exports = function(app) {
     console.log("called");
     console.log(req.body.data);
 
-<<<<<<< HEAD
-    // var parkArr = ['dogPark'];
-    // var search1 = {
-    //   dogpark: 'yes',
-    //   restrooms: 'yes'
-    // }
     var searchArr = req.body.data;
 
     var obj = {};
@@ -53,16 +47,6 @@ module.exports = function(app) {
       where: {
         [Op.or]: [obj]
       }
-      
-=======
-    var parkArr = ["dogPark"];
-
-    db.Parks.findAll({
-      "parkArr[0]": "yes"
->>>>>>> 78f5311dd06d292e08756f84618d8ae00eec78d1
-    }).then(function(dbParks) {
-      res.json(dbParks);
-      console.log(dbParks.dataValues);
     });
   });
 
