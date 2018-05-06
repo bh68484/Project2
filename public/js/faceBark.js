@@ -18,9 +18,9 @@ $("#submit").click(function() {
 
   var gender = $("#gender").val();
 
-  var kids = $("#kids").val();
+  var kids = $("#kids").prop("checked");
 
-  var otherDogs = $("#otherDogs").val();
+  var otherDogs = $("#otherDogs").prop("checked");
 
   // var owner = $("#owner-name")
   //   .val()
