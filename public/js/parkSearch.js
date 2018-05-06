@@ -16,66 +16,25 @@ $(document).ready(function() {
             }
         }
 
-        // for (var i = 0; i < picks.length; i++) {
-        //    db.Parks.findOne({
-        //     where: {
-        //         dogPark: yes
-        //     }
-        // }).then(function(dbParks) {
-        //     console.log(dbParks)
-        // });
-         
-        // }
-        // $.get("/api/parks" + authorId, function(data) {
-        //   console.log("Posts", data);
-        //   posts = data;
-        //   if (!posts || !posts.length) {
-        //     displayEmpty(author);
-        //   }
-        //   else {
-        //     initializeRows();
-        //   }
-        // })
-        // console.log(picks);
-
-        // $.ajax({
-        //     method: "GET",
-        //     url: "/api/parkSearch",
-        //     data: JSON.stringify(picks)
-        // }).then();
-        
         $.post('api/parkSearch', { data: picks}, 
             function(returnedData){
                 console.log(returnedData);
 
+                for (var i = 0; i < returnedData.length; i++) {
+                    // returnedData[i]
+                    var park = $("<div class='park'>");
 
-                var park = $("<div class='park'>");
+                    var name = $("<h4>");
+                    name.append(returnedData[i].name);
 
-                var name = $("<h3>");
-                name.append(returnedData.name);
+                    var address = $("<p>");
+                    address.append("Address: " + returnedData[i].address);
 
-                var address = $("<p>");
-                address.append("Address: " + returnedData.address);
-
-                var dogpark = $("<p>");
-                dogpark.append("DogPark: " + returnedData.dogpark);
-
-                var greenway = $("<p>");
-                greenway.append("Greenway Access: " + returnedData.greenwayAcess);
-
-                var field = $("<p>");
-                field.append("Multipurpose Field: " + returnedData.field);
-
-                var restrooms = $("<p>");
-                restrooms.append("Restrooms: " + returnedData.restrooms);
-
-                park.append(name, address, dogpark, greenway, field, restrooms);
-                $("#modal1").append(park);
+                    park.append(name, address);
+                    $("#modal1").append(park);
+                }
+                
         });
-        // $.get("/api/parkSearch", parks, function(data) {
-        //   // parks = data;
-        //   // initializeRows();
-        // });
 
         console.log(picks);
 

@@ -21,10 +21,10 @@ module.exports = function(app) {
     console.log("called");
     console.log(req.body.data);
 
-    db.Parks.findOne({
-      where: {
-        dogPark: "yes"
-      }
+    var parkArr = ['dogPark'];
+
+    db.Parks.findAll({
+      parkArr[0]: 'yes'
     }).then(function(dbParks) {
       res.json(dbParks);
       console.log(dbParks.dataValues);
