@@ -47,21 +47,26 @@ module.exports = function(app) {
       where: {
         [Op.or]: [obj]
       }
+    }).then(function(dbParks) {
+      // We have access to the todos as an argument inside of the callback function
+      res.json(dbParks);
     });
+    console.log("dbCalled");
+
   });
 
   //Posting new profiles through Dogs.js model
-  app.post("/api/newDog", function(req, res) {
-    console.log("New Profile:  ");
-    console.log(req.body);
-    db.Dog.create({
-      name: req.body.dogName,
-      breed: req.body.dogBreed,
-      picture: req.body.dogPic,
-      gender: req.body.gender,
-      description: req.body.dogDescription,
-      likes_dogs: req.body.otherDogs,
-      likes_people: req.body.kids
-    });
-  });
+  // app.post("/api/newDog", function(req, res) {
+  //   console.log("New Profile:  ");
+  //   console.log(req.body);
+  //   db.Dog.create({
+  //     name: req.body.dogName,
+  //     breed: req.body.dogBreed,
+  //     picture: req.body.dogPic,
+  //     gender: req.body.gender,
+  //     description: req.body.dogDescription,
+  //     likes_dogs: req.body.otherDogs,
+  //     likes_people: req.body.kids
+  //   });
+  // });
 };
