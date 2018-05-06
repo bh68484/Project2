@@ -4,25 +4,32 @@ var db = require("../models");
 
 module.exports = function(app) {
   //Getting the park data used by Google Maps App
-  app.get("/api/parks", function(req, res) {});
-  //Getting all dogs
-  app.get("/api/dogs", function(req, res) {});
+  app.get("/api/parks", function(req, res) {
+    db.Park.find({}).then(function(dbParks) {
+      res.json(dbParks);
+    });
+  });
 
+  //Getting all dogs
+  app.get("/api/dogs", function(req, res) {
+    db.Dog.findAll({}).then(function(dbDogs) {
+      res.json(dbDogs);
+    });
+  });
 
   app.post("/api/parkSearch", function(req, res) {
-  	console.log('called');
-  	console.log(req.body.data);
+    console.log("called");
+    console.log(req.body.data);
 
-  	db.Parks.findOne({
+    db.Parks.findOne({
       where: {
-        dogPark: 'yes'
-      },
+        dogPark: "yes"
+      }
     }).then(function(dbParks) {
       res.json(dbParks);
       console.log(dbParks.dataValues);
     });
-
-  })
+  });
 
   //Posting new profiles through Dogs.js model
   app.post("/api/new", function(req, res) {
@@ -41,5 +48,4 @@ module.exports = function(app) {
       likes_people: req.body.kids
     });
   });
-
 };
