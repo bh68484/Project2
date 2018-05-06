@@ -8,7 +8,9 @@ module.exports = function(sequelize, DataTypes) {
     walkingTrails: DataTypes.STRING,
     restrooms: DataTypes.STRING,
     field: DataTypes.STRING,
-    url: DataTypes.STRING
+    url: DataTypes.STRING,
+    lat: DataTypes.STRING,
+    lon: DataTypes.STRING 
   });
 
   return Parks;

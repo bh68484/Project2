@@ -2,6 +2,10 @@ var path = require("path");
 
 var db = require("../models");
 
+const Sequelize = require('sequelize');
+
+const Op = Sequelize.Op;
+
 module.exports = function(app) {
   //Getting the park data used by Google Maps App
   app.get("/api/parks", function(req, res) {
@@ -21,10 +25,24 @@ module.exports = function(app) {
     console.log("called");
     console.log(req.body.data);
 
-    var parkArr = ['dogPark'];
+    // var parkArr = ['dogPark'];
+    // var search1 = {
+    //   dogpark: 'yes',
+    //   restrooms: 'yes'
+    // }
+    var searchArr = req.body.data;
+
+    var obj = {};
+    searchArr.forEach(function(data){
+        obj[data[0]] = data[1]
+    });
+    console.log(obj);
 
     db.Parks.findAll({
-      parkArr[0]: 'yes'
+      where: {
+        [Op.or]: [obj]
+      }
+      
     }).then(function(dbParks) {
       res.json(dbParks);
       console.log(dbParks.dataValues);

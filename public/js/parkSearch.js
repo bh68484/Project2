@@ -2,17 +2,24 @@
 
 $(document).ready(function() {
 
-    var choiceArr = ["#dogPark", "#greenway", "#trails", "#restrooms", "#field"];
+    var choiceArr = ["#dogPark", "#greenwayAcess", "#walkingTrails", "#restrooms", "#field"];
     var picks = [];
+    var holder = [];
 
     $(document).on('click','#parkSearch', function(event){
         console.log("working");
 
         for (var i = 0; i < choiceArr.length; i++){
             if ($(choiceArr[i]).is(":checked"))
-            {
+            {   
+                holder = [];
                 choiceArr[i] = choiceArr[i].replace('#','');
-                picks.push(choiceArr[i]);
+                var choice = "yes";
+                // choice = choice.replace(/['"]+/g, '');
+                // console.log(choice);
+                holder.push(choiceArr[i], choice);
+                picks.push(holder);
+                // console.log(someStr.replace(/["]+/g, ''));
             }
         }
 
@@ -26,12 +33,29 @@ $(document).ready(function() {
 
                     var name = $("<h4>");
                     name.append(returnedData[i].name);
+                    // name.append($("<button class='waves-effect waves-light btn'>"));
 
                     var address = $("<p>");
                     address.append("Address: " + returnedData[i].address);
 
-                    park.append(name, address);
-                    $("#modal1").append(park);
+                    var dogPark = $("<p>");
+                    dogPark.append("DogPark: " + returnedData[i].dogpark);
+
+                    var restroom = $("<p>");
+                    restroom.append("Restrooms: " + returnedData[i].restrooms);
+
+                    var greenway = $("<p>");
+                    greenway.append("GreenwayAccess: " + returnedData[i].greenwayAcess);
+
+                    var field = $("<p>");
+                    field.append("Mulitpurpose Field: " + returnedData[i].field);
+
+                    var trails = $("<p>");
+                    trails.append("Walking Trails: " + returnedData[i].walkingTrails);
+
+                    park.append(name, address, dogPark, restroom, greenway, field, trails);
+                    // $("#title").append(name);
+                    $("#results").append(park);
                 }
                 
         });
