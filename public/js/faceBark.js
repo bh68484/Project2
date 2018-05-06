@@ -12,38 +12,41 @@ $(document).ready(function() {
 $("#submit").click(function() {
   event.preventDefault();
 
-  var dogName = $("#dog-name")
-    .val()
-    .trim();
-  var dogBreed = $("#dog-breed")
-    .val()
-    .trim();
-  var dogPic = $("#dogPic")
-    .val()
-    .trim();
-  var gender = $("#gender")
-    .val()
-    .trim();
-  var kids = $("#kids")
-    .val()
-    .trim();
-  var otherDogs = $("#otherDogs")
-    .val()
-    .trim();
-  var owner = $("#owner-name")
-    .val()
-    .trim();
-  var dogComment = $("#dogComment")
-    .val()
-    .trim();
-  var email = $("#email")
-    .val()
-    .trim();
-  var password = $("#password")
-    .val()
-    .trim();
+  var dogName = $("#dog-name").val();
+  var dogBreed = $("#dog-breed").val();
+  var dogPic = $("#dogPic").val();
 
-  $.post("/api/new", newProfile).then(function(data) {
+  var gender = $("#gender").val();
+
+  var kids = $("#kids").val();
+
+  var otherDogs = $("#otherDogs").val();
+
+  // var owner = $("#owner-name")
+  //   .val()
+  //
+  var dogComment = $("#dogComment").val();
+  // var email = $("#email")
+  //   .val()
+  //
+  // var password = $("#password")
+  //   .val()
+  //
+
+  console.log(dogName, dogBreed);
+
+  var dogObject = {
+    dogName: dogName,
+    dogBreed: dogBreed,
+    dogPic: dogPic,
+    gender: gender,
+    dogDescription: dogComment,
+    otherDogs: otherDogs,
+    kids: kids
+  };
+
+  console.log(dogObject);
+  $.post("/api/newDog", dogObject).then(function(data) {
     console.log(data);
   });
 });
