@@ -7,19 +7,15 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.ENUM,
       values: ["male", "female"]
     },
-    comment: DataTypes.STRING,
-    weight: DataTypes.INTEGER,
-    color: DataTypes.STRING,
-    personality: DataTypes.STRING,
+    description: DataTypes.STRING,
     likes_dogs: DataTypes.BOOLEAN,
-    likes_people: DataTypes.BOOLEAN,
-    favorite_games: DataTypes.STRING
+    likes_people: DataTypes.BOOLEAN
   });
 
   Dog.associate = function(models) {
     Dog.belongsTo(models.User, {
       foreignKey: {
-        allowNull: false
+        allowNull: true
       }
     });
   };
