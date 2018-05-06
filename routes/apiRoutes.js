@@ -24,7 +24,7 @@ module.exports = function(app) {
     var parkArr = ['dogPark'];
 
     db.Parks.findAll({
-      parkArr[0]: 'yes'
+      'parkArr[0]': 'yes'
     }).then(function(dbParks) {
       res.json(dbParks);
       console.log(dbParks.dataValues);
