@@ -25,6 +25,7 @@ module.exports = function(app) {
     console.log("called");
     console.log(req.body.data);
 
+<<<<<<< HEAD
     // var parkArr = ['dogPark'];
     // var search1 = {
     //   dogpark: 'yes',
@@ -43,6 +44,12 @@ module.exports = function(app) {
         [Op.or]: [obj]
       }
       
+=======
+    var parkArr = ["dogPark"];
+
+    db.Parks.findAll({
+      "parkArr[0]": "yes"
+>>>>>>> 78f5311dd06d292e08756f84618d8ae00eec78d1
     }).then(function(dbParks) {
       res.json(dbParks);
       console.log(dbParks.dataValues);
@@ -50,18 +57,15 @@ module.exports = function(app) {
   });
 
   //Posting new profiles through Dogs.js model
-  app.post("/api/new", function(req, res) {
+  app.post("/api/newDog", function(req, res) {
     console.log("New Profile:  ");
     console.log(req.body);
-    Dog.create({
+    db.Dog.create({
       name: req.body.dogName,
       breed: req.body.dogBreed,
       picture: req.body.dogPic,
       gender: req.body.gender,
-      owner: req.body.owner,
-      comment: req.body.dogComment,
-      email: req.body.email,
-      password: req.body.password,
+      description: req.body.dogDescription,
       likes_dogs: req.body.otherDogs,
       likes_people: req.body.kids
     });
