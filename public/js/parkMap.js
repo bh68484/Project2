@@ -9,8 +9,8 @@ function initMap() {
   // Create a map object and specify the DOM element
   // for display.
   var map = new google.maps.Map(document.getElementById("map"), {
-    center: myLatLng,
-    zoom: 10
+    center: myLatLng
+    //zoom: 10
   });
 
   function isEmpty(obj) {
@@ -33,13 +33,13 @@ function initMap() {
       } else {
         var lat = parseFloat(parks[i].lat);
         var lng = parseFloat(parks[i].lon);
-        addMarker({ lat: lat, lng: lng }, parks[i].name);
+        addMarker({ lat: lat, lng: lng }, parks[i].name, parks[i].address);
       }
     }
     map.fitBounds(bounds);
   });
 
-  function addMarker(coords, name) {
+  function addMarker(coords, name, address) {
     var marker = new google.maps.Marker({
       map: map,
       position: new google.maps.LatLng(coords.lat, coords.lng),
@@ -47,28 +47,18 @@ function initMap() {
     });
     console.log(coords.lat, coords.lng);
     bounds.extend(marker.position);
+    var infoWindow = new google.maps.InfoWindow({
+      content:
+        "<h4>" +
+        name +
+        "</h4><h5>" +
+        address +
+        "</h5><h5><a href='page.html'>Pick this Park</a></h5>",
+      maxWidth: 200
+    });
+
+    marker.addListener("click", function() {
+      infoWindow.open(map, marker);
+    });
   }
-
-  // Create a marker and set its position.
-  //   var marker = new google.maps.Marker({
-  //     map: map,
-  //     position: myLatLng,
-  //     title: "Hello World!"
-  //   });
-
-  //   var parkName = "Honeycutt Park";
-  //   var parkAddress = "123 Jones St. Raleigh, NC 21254";
-
-  //   var infoWindow = new google.maps.InfoWindow({
-  //     content:
-  //       "<h1>" +
-  //       parkName +
-  //       "</h1><h3>" +
-  //       parkAddress +
-  //       "</h3><h4><a href='page.html'>Pick this Park</a></h4>"
-  //   });
-
-  //   marker.addListener("click", function() {
-  //     infoWindow.open(map, marker);
-  //   });
 }

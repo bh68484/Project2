@@ -4,7 +4,17 @@
   left: 50px;
 }
 
-#results{
-	text-align: center;
+#results {
+  text-align: center;
 }
 
+#map {
+  height: 500px;
+  width: 500px;
+  /* margin: 50px; */
+}
+
+/* #mapContainer {
+  height: 100%;
+  width: 100%;
+} */
