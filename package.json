@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/bh68484/Project2#readme",
   "dependencies": {
+    "@google/maps": "^0.4.6",
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
     "mysql2": "^1.5.3",

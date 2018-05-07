@@ -45,7 +45,7 @@ function initMap() {
       position: new google.maps.LatLng(coords.lat, coords.lng),
       title: name
     });
-    console.log(coords.lat, coords.lng);
+    // console.log(coords.lat, coords.lng);
     bounds.extend(marker.position);
     var infoWindow = new google.maps.InfoWindow({
       content:
