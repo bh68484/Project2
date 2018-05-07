@@ -2,14 +2,14 @@ var path = require("path");
 
 var db = require("../models");
 
-const Sequelize = require('sequelize');
+const Sequelize = require("sequelize");
 
 const Op = Sequelize.Op;
 
 module.exports = function(app) {
   //Getting the park data used by Google Maps App
   app.get("/api/parks", function(req, res) {
-    db.Park.find({}).then(function(dbParks) {
+    db.Parks.findAll({}).then(function(dbParks) {
       res.json(dbParks);
     });
   });
@@ -38,8 +38,8 @@ module.exports = function(app) {
     var searchArr = req.body.data;
 
     var obj = {};
-    searchArr.forEach(function(data){
-        obj[data[0]] = data[1]
+    searchArr.forEach(function(data) {
+      obj[data[0]] = data[1];
     });
     console.log(obj);
 
@@ -52,7 +52,6 @@ module.exports = function(app) {
       res.json(dbParks);
     });
     console.log("dbCalled");
-
   });
 
   //Posting new profiles through Dogs.js model
