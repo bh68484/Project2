@@ -17,6 +17,11 @@
     <script src="https://code.jquery.com/jquery.js"></script>
     <!-- parkSearch.js -->
     <script type="text/javascript" src="js/parkSearch.js"></script>
+    <!-- Parks Map -->
+    <script src="./js/parkMap.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDimcyIaL5TsDxagrIOyFRuDTlfQg3J0uU&callback=initMap" async
+        defer></script>
+
 </head>
 
 <body>
@@ -107,28 +112,31 @@
 
             <h5 class="center-align col s1" id="or">Or</h5>
             <div class="right-align col s5 offset-s2" id="mapContainer">
-                <div>
-                    <iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/search?key=AIzaSyB0Lvpwm46XfO8OGyqYTvElFy0mMWDyp98
-                &q=parks+in+Wake+County+NC&zoom=11" allowfullscreen>
-                    </iframe>
+                <div id="map" style="height:450px; width:600px;">
                 </div>
+                <!-- <div>
+                    <iframe width=" 600 " height="450 " frameborder="0 " style="border:0 " src="https://www.google.com/maps/embed/v1/search?key=AIzaSyB0Lvpwm46XfO8OGyqYTvElFy0mMWDyp98
+                    &q=parks+in+Wake+County+NC&zoom=11 " allowfullscreen>
+                    </iframe>
+                </div> -->
             </div>
         </div>
     </div>
 
     <!-- Modal Structure -->
-    <div id="modal1" class="modal">
-      <div id="title"></div>
-      <div id="results"></div>
-      
+    <div id="modal1 " class="modal ">
+        <div id="title "></div>
+        <div id="results "></div>
+
     </div>
 
-    <footer class="page-footer light-green lighten-1" style="background-image:url(https://images.clipartuse.com/44e37483d02ea0cfe67a9a5f035c485c_grass-clipart-transparent-grass-clipart-free-clip-art-imagespng-_3788-974.png)">
-        <div class="container">
-            <div class="row">
-                <div class="col l6 s12">
-                    <h5 class="white-text">FaceBark</h5>
-                    <p class="grey-text text-lighten-4">"Every snack you make, every meal you bake, every bite you take, i'll be watching you!" ~ Every dog ever
+    <footer class="page-footer light-green lighten-1 " style="background-image:url(https://images.clipartuse.com/44e37483d02ea0cfe67a9a5f035c485c_grass-clipart-transparent-grass-clipart-free-clip-art-imagespng-_3788-974.png) ">
+        <div class="container ">
+            <div class="row ">
+                <div class="col l6 s12 ">
+                    <h5 class="white-text ">FaceBark</h5>
+                    <p class="grey-text text-lighten-4 ">"Every snack you make, every meal you bake, every bite you take, i 'll be watching you!" ~ Every dog
+                        ever
                     </p>
                 </div>
                 <div class="col l4 offset-l2 s12">
@@ -163,6 +171,7 @@
 <!-- <script src="./starter-template/js/init.js "></script> -->
 <script src="./starter-template/js/materialize.min.js "></script>
 <!-- <script src="./starter-template/js/materialize.js "></script> -->
+
 <script src="./js/faceBark.js"></script>
 
 </html>
