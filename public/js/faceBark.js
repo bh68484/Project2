@@ -50,3 +50,26 @@ $("#submit").click(function() {
     console.log(data);
   });
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+  var elems = document.querySelectorAll(".autocomplete");
+  var instances = M.Autocomplete.init(elems, options);
+});
+
+// Or with jQuery
+
+$(document).ready(function() {
+  var dogBreedsList = [];
+  var dogObject;
+  $.get("https://dog.ceo/api/breeds/list/all", function(data, status) {
+    var dogObject = data.message;
+    for (var key in dogObject) {
+      dogObject[key] = null;
+    }
+    console.log(dogObject);
+    $("input.autocomplete").autocomplete({
+      data: dogObject
+    });
+    console.log(dogObject);
+  });
+});
