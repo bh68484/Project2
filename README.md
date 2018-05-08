@@ -1,6 +1,6 @@
 # Project 2 - FaceBark
 
-##### FaceBark was created utilizing full-stack development. The purpose of FaceBark is to provide a way for dog lovers, like us, to not only find parks to take our dogs but also find new people to potentially socialize with. With FaceBark, a user can find a park and see who is at that park, including what dogs, in order to make a decision as to what park they're headed to for the day.
+##### FaceBark was created utilizing full-stack development techniques and technology. The purpose of FaceBark is to provide a way for dog lovers, like us, to not only find parks to take our dogs but also find new people to potentially socialize with. With FaceBark, a user can find a park and see who is at that park, including what dogs, in order to make a decision as to what park they're headed to for the day.
 
 &nbsp;
 
