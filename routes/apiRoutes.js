@@ -10,6 +10,10 @@ var googleMapsClient = require("@google/maps").createClient({
   key: "AIzaSyDimcyIaL5TsDxagrIOyFRuDTlfQg3J0uU"
 });
 
+// var reverseGeocode = require('latlng-to-zip');
+var distance = require('google-distance');
+var KilometersToMiles = require("kilometers-to-miles");
+
 module.exports = function(app) {
   //Getting the park data used by Google Maps App
   app.get("/api/parks", function(req, res) {
@@ -59,23 +63,54 @@ module.exports = function(app) {
 
   app.post("/api/parkSearch", function(req, res) {
     console.log("called");
-    console.log(req.body.data);
+    // console.log(req.body.distanceObj);
 
     var searchArr = req.body.data;
-
+    // var distanceArr = [];
     var obj = {};
     searchArr.forEach(function(data) {
       obj[data[0]] = data[1];
     });
-    console.log(obj);
+    // console.log(obj);
 
     db.Parks.findAll({
       where: {
         [Op.or]: [obj]
       }
     }).then(function(dbParks) {
-      // We have access to the todos as an argument inside of the callback function
+      
+      var distanceArr = [];
+      // console.log(dbParks);
+      for (var i = 0; i < dbParks.length; i++) {
+          // console.log(req.body.distanceObj.zipCode);
+          // console.log(dbParks[i].address);
+          var ktm = new KilometersToMiles();
+
+          distance.get(
+          {
+            origin: req.body.distanceObj.zipCode,
+            destination: dbParks[i].address
+          },
+          function(err, data) {
+            if (err) return console.log(err);
+            distanceArr.push(ktm.get(parseInt(data.distance)));
+            // console.log(ktm.get(parseInt(data.distance)));
+            // dbParks[i].distance = data.distance;
+            console.log(distanceArr);
+        })
+      }
+
+      // console.log(distanceArr.length);
+
+      // for (var i = 0; i < dbParks.length; i++) {
+      //   console.log("running");
+      //   dbParks[i].dataValues.distance = distanceArr[i];
+      //   console.log(dbParks[i].distance);
+      // }
+
+      // console.log(dbParks[0].dataValues);
       res.json(dbParks);
+      // res.json(dbParks, distanceArr);
     });
     console.log("dbCalled");
   });
