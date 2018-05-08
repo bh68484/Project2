@@ -81,6 +81,7 @@ module.exports = function(app) {
       
       var distanceArr = [];
       // console.log(dbParks);
+
       for (var i = 0; i < dbParks.length; i++) {
           // console.log(req.body.distanceObj.zipCode);
           // console.log(dbParks[i].address);
@@ -97,9 +98,24 @@ module.exports = function(app) {
             // console.log(ktm.get(parseInt(data.distance)));
             // dbParks[i].distance = data.distance;
             console.log(distanceArr);
+
+            if(distanceArr.length == dbParks.length){
+              addDistance(distanceArr);
+            }
         })
       }
-
+      
+      function addDistance(distanceArr){
+        console.log("working");
+        for (var i = 0; i < dbParks.length; i++) {
+          // console.log("running");
+          dbParks[i].dataValues.distance = distanceArr[i];
+          console.log(dbParks[i].dataValues.distance);
+          // console.log(distanceArr[i]);
+        }
+        res.json(dbParks);
+      }
+      // res.json(dbParks);
       // console.log(distanceArr.length);
 
       // for (var i = 0; i < dbParks.length; i++) {
@@ -109,7 +125,7 @@ module.exports = function(app) {
       // }
 
       // console.log(dbParks[0].dataValues);
-      res.json(dbParks);
+      // res.json(dbParks);
       // res.json(dbParks, distanceArr);
     });
     console.log("dbCalled");

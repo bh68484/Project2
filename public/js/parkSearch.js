@@ -43,7 +43,10 @@ $(document).ready(function() {
                     // returnedData[i]
                     // var lat = parseFloat(returnedData[i].lat);
                     // var lon = parseFloat(returnedData[i].lon);
+                    console.log(distanceObj.miles);
                     console.log(returnedData[i].distance);
+
+                    if(parseInt(returnedData[i].distance) <= parseInt(distanceObj.miles)){
                     var park = $("<div class='park'>");
 
                     var name = $("<h4>");
@@ -83,6 +86,9 @@ $(document).ready(function() {
                     park.append(info, btnDiv, spacer);
                     // $("#title").append(name);
                     $("#results").append(park);
+                } else{
+                    $("#results").append("No Results Within Range");
+                }
                 }
                 
         });
