@@ -5,6 +5,17 @@
  *
  * Made By MaterializeCSS.com
  */
+footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: auto;
+  margin: auto;
+  background-color: #efefef;
+  text-align: center;
+}
+
 .icon-block {
   padding: 0 15px;
 }
@@ -46,7 +57,7 @@
 
 #dogGif {
   z-index: -1;
-  position: absolute;
+  position: fixed;
   right: 200px;
   top: 10px;
 }
@@ -54,14 +65,4 @@
 #searchPark {
   font-size: 16px;
   color: white;
-}
-
-footer {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  padding: 1rem;
-  background-color: #efefef;
-  text-align: center;
 }
