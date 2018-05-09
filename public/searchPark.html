@@ -1,65 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FaceBark - Find a Park</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <!-- <link href="./public/css/style.css" rel="stylesheet"> -->
+    <link href="css/searchPark.css" rel="stylesheet">
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- parkSearch.js -->
+    <script type="text/javascript" src="js/parkSearch.js"></script>
+    <!-- Parks Map -->
+    <script src="./js/parkMap.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDimcyIaL5TsDxagrIOyFRuDTlfQg3J0uU&callback=initMap" async
+        defer></script>
+
+</head>
+
 <body>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>FaceBark - Find a Park</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
-        <!--Import Google Icon Font-->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <!--Import materialize.css-->
-        <!-- <link href="./public/css/style.css" rel="stylesheet"> -->
-        <link href="css/searchPark.css" rel="stylesheet">
-        <!-- JQuery -->
-        <script src="https://code.jquery.com/jquery.js"></script>
-        <!-- parkSearch.js -->
-        <script type="text/javascript" src="js/parkSearch.js"></script>
-        <!-- Parks Map -->
-        <script src="./js/parkMap.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDimcyIaL5TsDxagrIOyFRuDTlfQg3J0uU&callback=initMap" async
-            defer></script>
+    <!-- //header -->
+    <nav class="light-green lighten-1" role="navigation">
+        <div class="nav-wrapper container">
+            <a id="logo-container" href="home.html" class="brand-logo">FaceBark</a>
+            <ul class="right hide-on-med-and-down">
+                <li>
+                    <a href="home.html">Home</a>
+                </li>
+                <li>
+                    <a class="modal-trigger" href="#modal1">Add a Dog</a>
+                </li>
+                <li>
+                    <a href="findPark.html">Find a Park</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-    </head>
-
-    <main>
-
-        <!-- //header -->
-        <nav class="light-green lighten-1" role="navigation">
-            <div class="nav-wrapper container">
-                <a id="logo-container" href="home.html" class="brand-logo">FaceBark</a>
-                <ul class="right hide-on-med-and-down">
-                    <li>
-                        <a href="home.html">Home</a>
-                    </li>
-                    <li>
-                        <a class="modal-trigger" href="#modal1">Add a Dog</a>
-                    </li>
-                    <li>
-                        <a href="findPark.html">Find a Park</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-
-        <!-- main main -->
-        <div class="container">
-            <div class="section no-pad-bot" id="index-banner">
-                <h2 class="header center orange-text">Find a Park</h2>
-            </div>
-            <br>
-            <div class="row">
-                <div class="parkOptions col s5 left-align">
-                    <h3 class="center-align" id="searchtext">Search for a Park</h3>
-                    <h6 class="center-align" id="searchtext">Choose From the Options Below</h6>
+    <!-- main main -->
+    <div class="container">
+        <div class="section no-pad-bot" id="index-banner">
+            <h2 class="header center orange-text">Find a Park</h2>
+        </div>
+        <br>
+        <div class="row">
+            <div class="parkOptions col s5 left-align">
+                <h3 class="center-align" id="searchtext">Search for a Park</h3>
+                <h6 class="center-align" id="searchtext">Choose From the Options Below</h6>
+                <br>
+                <h6 class="center-align" id="withinMiles">Within</h6>
+                <form action="#">
+                    <p class="range-field">
+                        <input type="range" id="test5" min="0" max="100" />
+                    </p>
                     <br>
-                    <h6 class="center-align" id="withinMiles">Within</h6>
+                    <br>
+                    <div class="row center">
+                        <a id="parkSearch" class="waves-effect waves-light btn modal-trigger center" href="#modal1">Search</a>
+                    </div>
+
+                </form>
+                <h6 class="center-align">Miles of</h6>
+                <input placeholder="Zip Code" id="zipCode" type="text" class="validate center-align">
+                <br>
+                <br>
+                <br>
+                <h5 class="center-align hasFeatures">Choose Features</h5>
+                <br>
+                <div class="row">
                     <form action="#">
-                        <p class="range-field">
-                            <input type="range" id="test5" min="0" max="100" />
+                        <p>
+                            <label class="col s4" for="dogPark">
+                                <input id="dogPark" type="checkbox" />
+                                <span>Dog-Park</span>
+                            </label>
+                            <label class="col s4" for="greenwayAcess">
+                                <input id="greenwayAcess" type="checkbox" />
+                                <span>Greenway Access</span>
+                            </label>
+                            <label class="col s4" for="restrooms">
+                                <input id="restrooms" type="checkbox" />
+                                <span>Bathrooms</span>
+                            </label>
+                        </p>
+                    </form>
+                </div>
+                <div class="row">
+                    <form action="#">
+                        <p>
+                            <label class="col s4" for="hasDogs">
+                                <input id="hasDogs" type="checkbox" />
+                                <span>Has Dogs There Now</span>
+                            </label>
+                            <label class="col s4" for="field">
+                                <input id="field" type="checkbox" />
+                                <span>Multipurpose Field</span>
+                            </label>
+                            <label class="col s4" for="walkingTrails">
+                                <input id="walkingTrails" type="checkbox" />
+                                <span>Walking Trails</span>
+                            </label>
                         </p>
                         <br>
                         <br>
@@ -68,78 +114,28 @@
                         </div>
 
                     </form>
-                    <h6 class="center-align">Miles of</h6>
-                    <input placeholder="Zip Code" id="zipCode" type="text" class="validate center-align">
-                    <br>
-                    <br>
-                    <br>
-                    <h5 class="center-align hasFeatures">Choose Features</h5>
-                    <br>
-                    <div class="row">
-                        <form action="#">
-                            <p>
-                                <label class="col s4" for="dogPark">
-                                    <input id="dogPark" type="checkbox" />
-                                    <span>Dog-Park</span>
-                                </label>
-                                <label class="col s4" for="greenwayAcess">
-                                    <input id="greenwayAcess" type="checkbox" />
-                                    <span>Greenway Access</span>
-                                </label>
-                                <label class="col s4" for="restrooms">
-                                    <input id="restrooms" type="checkbox" />
-                                    <span>Bathrooms</span>
-                                </label>
-                            </p>
-                        </form>
-                    </div>
-                    <div class="row">
-                        <form action="#">
-                            <p>
-                                <label class="col s4" for="hasDogs">
-                                    <input id="hasDogs" type="checkbox" />
-                                    <span>Has Dogs There Now</span>
-                                </label>
-                                <label class="col s4" for="field">
-                                    <input id="field" type="checkbox" />
-                                    <span>Multipurpose Field</span>
-                                </label>
-                                <label class="col s4" for="walkingTrails">
-                                    <input id="walkingTrails" type="checkbox" />
-                                    <span>Walking Trails</span>
-                                </label>
-                            </p>
-                            <br>
-                            <br>
-                            <div class="row center">
-                                <a id="parkSearch" class="waves-effect waves-light btn modal-trigger center" href="#modal1">Search</a>
-                            </div>
-
-                        </form>
-                    </div>
-
                 </div>
 
-                <h5 class="center-align col s1" id="or">Or</h5>
-                <div class="right-align col s5 offset-s2" id="mapContainer">
-                    <div id="map">
-                    </div>
-                    <!-- <div>
+            </div>
+
+            <h5 class="center-align col s1" id="or">Or</h5>
+            <div class="right-align col s5 offset-s2" id="mapContainer">
+                <div id="map">
+                </div>
+                <!-- <div>
                     <iframe width=" 600 " height="450 " frameborder="0 " style="border:0 " src="https://www.google.com/maps/embed/v1/search?key=AIzaSyB0Lvpwm46XfO8OGyqYTvElFy0mMWDyp98
                     &q=parks+in+Wake+County+NC&zoom=11 " allowfullscreen>
                     </iframe>
                 </div> -->
-                </div>
             </div>
         </div>
+    </div>
 
-        <!-- Modal Structure -->
-        <div id="modal1" class="modal">
-            <div id="results" class="container"></div>
-
-        </div>
-    </main>
-    <footer class="page-footer light-green lighten-1 " style="background-image:url(https://images.clipartuse.com/44e37483d02ea0cfe67a9a5f035c485c_grass-clipart-transparent-grass-clipart-free-clip-art-imagespng-_3788-974.png) ">
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+        <div id="results" class="container"></div>
+    </div>
+    <footer id="footer1" class="page-footer footer-fixed light-green lighten-1 " style="background-image:url(https://images.clipartuse.com/44e37483d02ea0cfe67a9a5f035c485c_grass-clipart-transparent-grass-clipart-free-clip-art-imagespng-_3788-974.png) ">
         <div class="container ">
             <div class="row ">
                 <div class="col l6 s12 ">
@@ -167,20 +163,20 @@
                 </div>
             </div>
         </div>
-        <div class="footer-copyright">
+        <div class="footer-copyright footer-fixed">
             <div class="container">
                 © 2018 Copyright Text
                 <a class="grey-text text-lighten-4 right" href="http://www.theuselessweb.com/">More Links</a>
             </div>
         </div>
     </footer>
-</body>
-<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js "></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js "></script>
-<!-- <script src="./starter-template/js/init.js "></script> -->
-<script src="./starter-template/js/materialize.min.js "></script>
-<!-- <script src="./starter-template/js/materialize.js "></script> -->
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js "></script>
+    <!-- <script src="./starter-template/js/init.js "></script> -->
+    <script src="./starter-template/js/materialize.min.js "></script>
+    <!-- <script src="./starter-template/js/materialize.js "></script> -->
 
-<script src="./js/faceBark.js"></script>
+    <script src="./js/faceBark.js"></script>
+</body>
 
 </html>
