@@ -35,65 +35,68 @@ $(document).ready(function() {
 
 
 
-        $.post('api/parkSearch', { data: picks, distanceObj}, 
+        $.post('api/parkSearch', {data: picks, distanceObj}, 
             function(returnedData){
                 console.log(returnedData);
 
                 for (var i = 0; i < returnedData.length; i++) {
-                    // returnedData[i]
-                    // var lat = parseFloat(returnedData[i].lat);
-                    // var lon = parseFloat(returnedData[i].lon);
-                    console.log(distanceObj.miles);
+
                     console.log(returnedData[i].distance);
+                    if (returnedData[i].distance == undefined) {
+                        // console.log('fix called');
+                        returnedData[i].distance = distanceObj.miles;
+                    }
+
+                    // console.log('fixed: ' + returnedData[i].distance);
 
                     if(parseInt(returnedData[i].distance) <= parseInt(distanceObj.miles)){
-                    var park = $("<div class='park'>");
+                        var park = $("<div class='park'>")
 
-                    var name = $("<h4>");
-                    name.append(returnedData[i].name);
+                        var name = $("<h4>");
+                        name.append(returnedData[i].name);
 
-                    var address = $("<p>");
-                    address.append("Address: " + returnedData[i].address);
+                        var address = $("<p>");
+                        address.append("- Address: " + returnedData[i].address);
 
-                    var dogPark = $("<li>");
-                    dogPark.append("DogPark: " + returnedData[i].dogpark);
+                        var dogPark = $("<li>");
+                        dogPark.append("- DogPark: " + returnedData[i].dogpark);
 
-                    var restroom = $("<li>");
-                    restroom.append("Restrooms: " + returnedData[i].restrooms);
+                        var restroom = $("<li>");
+                        restroom.append("- Restrooms: " + returnedData[i].restrooms);
 
-                    var greenway = $("<li>");
-                    greenway.append("GreenwayAccess: " + returnedData[i].greenwayAcess);
+                        var greenway = $("<li>");
+                        greenway.append("- GreenwayAccess: " + returnedData[i].greenwayAcess);
 
-                    var field = $("<li>");
-                    field.append("Mulitpurpose Field: " + returnedData[i].field);
+                        var field = $("<li>");
+                        field.append("- Mulitpurpose Field: " + returnedData[i].field);
 
-                    var trails = $("<li>");
-                    trails.append("Walking Trails: " + returnedData[i].walkingTrails);
+                        var trails = $("<li>");
+                        trails.append("- Walking Trails: " + returnedData[i].walkingTrails);
 
-                    var list = $("<ul class='container'>");
-                    list.append(dogPark, restroom, greenway, field, trails);
+                        var list = $("<ul class='container'>");
+                        list.append(dogPark, restroom, greenway, field, trails);
 
-                    var info = $("<div id='info' class='container'>");
-                    info.append(name, address, list);
+                        var info = $("<div id='info' class='container'>");
+                        info.append(name, address, list);
 
-                    var parkbtn = $("<button class='waves-effect waves-light btn' id='parkButton'>");
-                    parkbtn.append("Go To Park");
+                        var parkbtn = $("<button class='waves-effect waves-light btn' id='parkButton'>");
+                        parkbtn.append("Go To Park");
 
-                    var btnDiv = $("<div id='buttonDiv'>");
-                    btnDiv.append(parkbtn);
+                        var btnDiv = $("<div id='buttonDiv'>");
+                        btnDiv.append(parkbtn);
 
-                    var spacer = $("<div id='spacer'>");
-                    park.append(info, btnDiv, spacer);
-                    // $("#title").append(name);
-                    $("#results").append(park);
-                } else{
-                    $("#results").append("No Results Within Range");
-                }
+                        var spacer = $("<div id='spacer'>");
+                        park.append(info, btnDiv, spacer);
+                        // $("#title").append(name);
+                        $("#results").append(park);
+                    } else{
+                        $("#results").html("No Results Within Range");
+                    }
                 }
                 
+            });
+
+        // console.log(picks);
+
         });
-
-        console.log(picks);
-
-      });
 });
