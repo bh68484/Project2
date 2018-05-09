@@ -1,3 +1,5 @@
+var lastOpenedInfoWindow;
+
 function initMap() {
   var myLatLng = { lat: 35.90286339, lng: -78.62558617 };
   var markerIcon = "/images/parking-lot-maps.png";
@@ -49,16 +51,27 @@ function initMap() {
     bounds.extend(marker.position);
     var infoWindow = new google.maps.InfoWindow({
       content:
-        "<h4>" +
+        "<h5>" +
         name +
-        "</h4><h5>" +
+        "</h5><hp>" +
         address +
-        "</h5><h5><a href='page.html'>Pick this Park</a></h5>",
+        "</p><p><a href='page.html'>Pick this Park</a></hp>",
       maxWidth: 200
     });
 
     marker.addListener("click", function() {
+      closeLastOpenedInfoWindow();
+
       infoWindow.open(map, marker);
+      lastOpenedInfoWindow = infoWindow;
+      console.log(infoWindow);
+      console.log(lastOpenedInfoWindow);
     });
+  }
+}
+
+function closeLastOpenedInfoWindow() {
+  if (lastOpenedInfoWindow) {
+    lastOpenedInfoWindow.close();
   }
 }

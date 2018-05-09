@@ -10,7 +10,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <!-- <link href="./public/css/style.css" rel="stylesheet"> -->
     <link href="css/findPark.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -33,7 +36,7 @@
         </div>
     </nav>
 
-    <!-- body body -->
+    <!-- main body -->
     <div class="container">
         <div class="section no-pad-bot" id="index-banner">
             <h2 class="header center orange-text">Find a Park</h2>
@@ -47,13 +50,13 @@
             <ul class="collection" id="parkRow">
                 <div class="row">
                     <li class="collection-item">
-                        <img src="./images/carolinaPines.jpg" alt="park_pic" class="col s4" id="parkPic">
-                        <h2 id="parkTitle" class="col s4">Carolina Pines Park</h2>
-                        <h6 class="col s2 center-align" id="parkAddress">2305 Lake Wheeler Rd, Raleigh, NC 27603</h6>
+                        <img src="./images/northGarner.jpg" alt="park_pic" class="col s4" id="parkPic">
+                        <h2 id="parkTitle" class="col s4">North Garner Dog Park</h2>
+                        <h6 class="col s2 center-align" id="parkAddress">221 E Garner Rd, Garner, NC 27529</h6>
                         <div class="container center-align col s3" id="parkList">
-                            <h5>Ballfields</h5>
-                            <h5>Playground</h5>
-                            <h5>Picnic Shelter</h5>
+                            <h5>Located Downtown</h5>
+                            <h5>Water for Dogs</h5>
+                            <h5>Dog Toys Provided</h5>
                         </div>
                         <div class="row">
                             <button class="waves-effect waves-light btn-large modal-trigger center-align col s12" id="parkButton" data-target="modal1"
@@ -70,12 +73,12 @@
             <ul class="collection" id="parkRow">
                 <div class="row">
                     <li class="collection-item">
-                        <img src="./images/millbrook.JPG" alt="park_pic" class="col s4" id="parkPic">
-                        <h2 id="parkTitle" class="col s4">Millbrook Exchange Park</h2>
-                        <h6 class="col s2 center-align" id="parkAddress">1815 Spring Forest Rd, Raleigh, NC 27615</h6>
+                        <img src="./images/knightdale.jpg" alt="park_pic" class="col s4" id="parkPic">
+                        <h2 id="parkTitle" class="col s4">Knightdale Station Park</h2>
+                        <h6 class="col s2 center-align" id="parkAddress">810 N First Ave, Knightdale, NC 27545</h6>
                         <div class="container center-align col s3" id="parkList">
-                            <h5>Pool</h5>
                             <h5>Ballfields</h5>
+                            <h5>Playground</h5>
                             <h5>Walking Trails</h5>
                         </div>
                         <div class="row">
@@ -92,11 +95,11 @@
             <ul class="collection" id="parkRow">
                 <div class="row">
                     <li class="collection-item">
-                        <img src="./images/oakwoodPark.jpg" alt="park_pic" class="col s4" id="parkPic">
-                        <h2 id="parkTitle" class="col s4">Oakwood Park</h2>
-                        <h6 class="col s2 center-align" id="parkAddress">910 Brookside Dr, Raleigh, NC 27604</h6>
+                        <img src="./images/wendell.jpg" alt="park_pic" class="col s4" id="parkPic">
+                        <h2 id="parkTitle" class="col s4">Wendell Park</h2>
+                        <h6 class="col s2 center-align" id="parkAddress">1601 W. Third Street, Wendell, NC 27591</h6>
                         <div class="container center-align col s3" id="parkList">
-                            <h5>Basketball Court</h5>
+                            <h5>Disc Golf</h5>
                             <h5>Ballfields</h5>
                             <h5>Restrooms</h5>
                         </div>
@@ -110,74 +113,30 @@
                 </div>
             </ul>
         </div>
-        <div class="row" data-target="modal1" href="#modal1">
-            <ul class="collection" id="parkRow">
-                <div class="row">
-                    <li class="collection-item">
-                        <img src="./images/flaherty.jpg" alt="park_pic" class="col s4" id="parkPic">
-                        <h2 id="parkTitle" class="col s4">J.B. Flaherty Park</h2>
-                        <h6 class="col s2 center-align" id="parkAddress">1226 N White St, Wake Forest, NC 27587</h6>
-                        <div class="container center-align col s3" id="parkList">
-                            <h5>Tennis Court</h5>
-                            <h5>Fishing</h5>
-                            <h5>Restrooms</h5>
-                        </div>
-                        <div class="row">
-                            <button class="waves-effect waves-light btn-large modal-trigger center-align col s12" id="parkButton" data-target="modal1"
-                                href="#modal1">Go To Park</button>
-                        </div>
-                        <!-- <button class="waves-effect waves-light btn-large right-align modal-trigger" id="goParkBtn" data-target="modal2" href="#modal2">Go To Park</button> -->
-
-                    </li>
-                </div>
-            </ul>
-        </div>
-        <div class="row" data-target="modal1" href="#modal1">
-            <ul class="collection" id="parkRow">
-                <div class="row">
-                    <li class="collection-item">
-                        <img src="./images/godbolt.jpg" alt="park_pic" class="col s4" id="parkPic">
-                        <h2 id="parkTitle" class="col s4">Robert V. Godbold Park</h2>
-                        <h6 class="col s2 center-align" id="parkAddress">2050 NW Maynard Road, Cary, NC 27513</h6>
-                        <div class="container center-align col s3" id="parkList">
-                            <h5>Skatepark</h5>
-                            <h5>Greenway Access</h5>
-                            <h5>Restrooms</h5>
-                        </div>
-                        <div class="row">
-                            <button class="waves-effect waves-light btn-large modal-trigger center-align col s12" id="parkButton" data-target="modal1"
-                                href="#modal1">Go To Park</button>
-                        </div>
-                        <!-- <button class="waves-effect waves-light btn-large right-align modal-trigger" id="goParkBtn" data-target="modal2" href="#modal2">Go To Park</button> -->
-
-                    </li>
-                </div>
-            </ul>
-        </div>
     </div>
-    <!-- to searchPark -->
+
     <div class="container">
         <div class="row">
+            <!-- to searchPark -->
             <button id="searchPark" onclick="window.location='searchPark.html';" class="waves-effect waves-light btn-large left-align col s2">
                 <a id="searchPark" href="searchPark.html" style="color:white">Search Instead</a>
             </button>
 
             <!-- pagination -->
-
             <ul class="pagination right-align">
-                <li class="active">
+                <li class="disabled">
+                    <a href="./findPark2.html">
+                        <i class="material-icons">chevron_left</i>
+                    </a>
+                </li>
+                <li class="waves-effect">
                     <a href="./findPark.html">1</a>
                 </li>
                 <li class="waves-effect">
                     <a href="./findPark2.html">2</a>
                 </li>
-                <li class="waves-effect">
+                <li class="active">
                     <a href="./findPark3.html">3</a>
-                </li>
-                <li class="disabled">
-                    <a href="./findPark2.html">
-                        <i class="material-icons">chevron_right</i>
-                    </a>
                 </li>
             </ul>
         </div>
@@ -220,7 +179,8 @@
             <br>
         </div>
     </div>
-    <footer id="footer1" class="page-footer footer-fixed light-green lighten-1" style="background-image:url(https://images.clipartuse.com/44e37483d02ea0cfe67a9a5f035c485c_grass-clipart-transparent-grass-clipart-free-clip-art-imagespng-_3788-974.png)">
+
+    <footer class="page-footer light-green lighten-1" style="background-image:url(https://images.clipartuse.com/44e37483d02ea0cfe67a9a5f035c485c_grass-clipart-transparent-grass-clipart-free-clip-art-imagespng-_3788-974.png)">
         <div class="container">
             <div class="row">
                 <div class="col l6 s12">
@@ -247,19 +207,20 @@
                 </div>
             </div>
         </div>
-        <div class="footer-copyright footer-fixed">
+        <div class="footer-copyright">
             <div class="container">
                 © 2018 Copyright Text
                 <a class="grey-text text-lighten-4 right" href="http://www.theuselessweb.com/">More Links</a>
             </div>
         </div>
     </footer>
-    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js "></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js "></script>
-    <!-- <script src="./starter-template/js/init.js "></script> -->
-    <script src="./starter-template/js/materialize.min.js "></script>
-    <!-- <script src="./starter-template/js/materialize.js "></script> -->
-    <script src="./js/faceBark.js"></script>
+
 </body>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js "></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js "></script>
+<!-- <script src="./starter-template/js/init.js "></script> -->
+<script src="./starter-template/js/materialize.min.js "></script>
+<!-- <script src="./starter-template/js/materialize.js "></script> -->
+<script src="./js/faceBark.js"></script>
 
 </html>

@@ -4,6 +4,11 @@
   padding-bottom: 15px;
 }
 
+#parkAddress {
+  position: relative;
+  top: 55px;
+}
+
 #parkButton {
   position: relative;
   top: 30px;
@@ -18,4 +23,18 @@
 #parkList {
   position: relative;
   top: 20px;
+}
+
+#searchPark {
+  position: relative;
+}
+
+#footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
 }
