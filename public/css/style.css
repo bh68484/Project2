@@ -5,6 +5,7 @@
  *
  * Made By MaterializeCSS.com
  */
+
 footer {
   position: absolute;
   right: 0;
@@ -13,7 +14,6 @@ footer {
   padding: auto;
   margin: auto;
   background-color: #efefef;
-  text-align: center;
 }
 
 .icon-block {
