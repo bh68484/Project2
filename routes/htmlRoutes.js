@@ -1,5 +1,7 @@
 // Dependencies
 var path = require("path");
+var db = require("../models");
+const Sequelize = require("sequelize");
 
 // Routes
 module.exports = function(app) {
@@ -16,5 +18,12 @@ module.exports = function(app) {
 
   app.get("/findPark", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/findPark.html"));
+  });
+
+  //Renders a handlebars page with a list of all dogs.
+  app.get("/dogs", function(req, res) {
+    db.Dog.findAll({}).then(function(data) {
+      res.render("dogs", { dogs: data });
+    });
   });
 };
