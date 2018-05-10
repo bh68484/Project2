@@ -1,0 +1,10 @@
+#dogInfo {
+  position: relative;
+  top: 50px;
+}
+
+img {
+  border-style: solid;
+  border-width: 2px;
+  border-color: goldenrod;
+}
