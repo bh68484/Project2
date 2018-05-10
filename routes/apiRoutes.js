@@ -4,8 +4,6 @@ var db = require("../models");
 
 const Sequelize = require("sequelize");
 
-const fileUpload = require("express-fileupload");
-
 const Op = Sequelize.Op;
 
 var googleMapsClient = require("@google/maps").createClient({
@@ -13,7 +11,7 @@ var googleMapsClient = require("@google/maps").createClient({
 });
 
 // var reverseGeocode = require('latlng-to-zip');
-var distance = require("google-distance");
+var distance = require('google-distance');
 var KilometersToMiles = require("kilometers-to-miles");
 
 module.exports = function(app) {
@@ -64,15 +62,12 @@ module.exports = function(app) {
   });
 
   app.post("/api/parkSearch", function(req, res) {
-    // console.log("called");
-    // console.log(req.body.distanceObj);
-
+ 
     var searchArr = req.body.data;
-    console.log(searchArr);
-    // var distanceArr = [];
+
     var obj = {};
 
-    if (searchArr !== undefined) {
+    if(searchArr !== undefined){
       searchArr.forEach(function(data) {
         obj[data[0]] = data[1];
       });
@@ -81,96 +76,97 @@ module.exports = function(app) {
         where: {
           [Op.or]: [obj]
         }
+
       }).then(function(dbParks) {
         var zipCode = req.body.distanceObj.zipCode;
-        // var parks = generateParks(zipCode, dbParks);
-        //  console.log(parks);
-        var distanceArr = [];
+  
+       var distanceArr = [];
 
-        if (zipCode != "") {
+    if(zipCode != ''){
+          var holder = 0;
           for (var i = 0; i < dbParks.length; i++) {
             var ktm = new KilometersToMiles();
 
-            if (dbParks[i].address !== "") {
+            if (dbParks[i].address == '') {
+              holder++;
+            }
+            if (dbParks[i].address !== '') {
               distance.get(
-                {
-                  origin: zipCode,
-                  destination: dbParks[i].address
-                },
-                function(err, data) {
-                  if (err) return console.log(err);
-                  distanceArr.push(ktm.get(parseInt(data.distance)));
+              {
+                origin: zipCode,
+                destination: dbParks[i].address
+              },
+              function(err, data) {
+                if (err) return console.log(err);
+             
+                distanceArr.push(ktm.get(parseInt(data.distance)));
+      
+                if(distanceArr.length + holder == dbParks.length){
+
+                  var parks = addDistance(distanceArr, dbParks);
+                  res.json(parks);
                 }
-              );
+              })
             }
           }
-
-          var parks = addDistance(distanceArr, dbParks);
-          res.json(parks);
+      
         } else {
           res.json(dbParks);
         }
+    });
+    }else{
 
-        // console.log('distanceObj: ' + req.body.distanceObj.miles);
-        // res.json(parks);
-        // if (true) {
-      });
-    } else {
-      db.Parks.findAll({
-        // where: {
-        //   [Op.or]: [obj]
-        // }
+       db.Parks.findAll({
+ 
       }).then(function(dbParks) {
         var zipCode = req.body.distanceObj.zipCode;
-        // var parks = generateParks(zipCode, dbParks);
-        //  console.log(parks);
         var distanceArr = [];
+    if(zipCode != ''){
 
-        if (zipCode != "") {
-          for (var i = 0; i < dbParks.length; i++) {
+          for (var i = 0; i < 100; i++) {;
             var ktm = new KilometersToMiles();
 
-            if (dbParks[i].address !== "") {
+            if (dbParks[i].address !== '') {
+ 
               distance.get(
-                {
-                  origin: zipCode,
-                  destination: dbParks[i].address
-                },
-                function(err, data) {
-                  if (err) return console.log(err);
-                  distanceArr.push(ktm.get(parseInt(data.distance)));
-                  // console.log(ktm.get(parseInt(data.distance)));
-                  // dbParks[i].distance = data.distance;
-                  // console.log(distanceArr);
+              {
+                origin: zipCode,
+                destination: dbParks[i].address
+              },
+              function(err, data) {
+                if (err) return console.log(err);
+ 
+                distanceArr.push(ktm.get(parseInt(data.distance)));
+                if(distanceArr.length == 100){
+                  var parks = addDistance(distanceArr, dbParks);
+                  res.json(parks);
                 }
-              );
+              })
             }
           }
-
-          var parks = addDistance(distanceArr, dbParks);
-          res.json(parks);
-        } else {
+        }else{
           res.json(dbParks);
         }
 
-        // console.log('distanceObj: ' + req.body.distanceObj.miles);
-        // res.json(parks);
-        // if (true) {
       });
     }
-    // console.log("dbCalled");
   });
 
-  function addDistance(distanceArr, dbParks) {
-    // console.log("working");
-    for (var i = 0; i < dbParks.length; i++) {
-      // console.log("running");
-      dbParks[i].dataValues.distance = distanceArr[i];
-      // console.log(dbParks[i].dataValues.distance);
-      // console.log(distanceArr[i]);
-    }
-    return dbParks;
-  }
+  function addDistance(distanceArr, dbParks){
+        
+        if(distanceArr.length === 100){
+          for (var i = 0; i < 100; i++) {
+            dbParks[i].dataValues.distance = distanceArr[i];
+          }
+          return dbParks;
+        }else{
+          for (var i = 0; i < dbParks.length; i++) {
+            dbParks[i].dataValues.distance = distanceArr[i];
+          }
+          return dbParks;
+        }
+      }
+
 
   // Posting new profiles through Dogs.js model
   app.post("/api/newDog", function(req, res) {
@@ -186,6 +182,7 @@ module.exports = function(app) {
       likes_people: req.body.kids
     });
   });
+
 
   app.post("/uploadpic", function(req, res) {});
 };
