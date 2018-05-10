@@ -2,6 +2,7 @@
 //   var elems = document.querySelectorAll(".modal");
 //   var instances = M.Modal.init(elems, options);
 // });
+var dogPicture;
 console.log("working");
 
 $(document).ready(function() {
@@ -24,7 +25,7 @@ $("#submit").click(function() {
   var dogObject = {
     dogName: dogName,
     dogBreed: dogBreed,
-    dogPic: dogPic,
+    dogPic: dogPicture,
     gender: gender,
     dogDescription: dogComment,
     otherDogs: otherDogs,
@@ -36,16 +37,7 @@ $("#submit").click(function() {
     console.log(data);
   });
 
-  $.ajax({
-    url: "/uploadpic",
-    type: "POST",
-    data: dogObject.dogPic,
-    processData: false,
-    contentType: false,
-    success: function(data) {
-      console.log("upload successful!");
-    }
-  });
+  //dogPicture = null;
 });
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -54,6 +46,20 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 // Or with jQuery
+
+$("#dogPic").on("change", function(ev) {
+  var file = ev.target.files[0];
+  // console.log(ev.target.files[0]);
+  // console.log("Picture Upload Works");
+
+  var reader = new FileReader();
+  console.log(reader);
+  reader.onloadend = function(e) {
+    console.log(e.target.result);
+    dogPicture = e.target.result;
+  };
+  reader.readAsDataURL(file);
+});
 
 $(document).ready(function() {
   var dogBreedsList = [];
