@@ -1,6 +1,4 @@
-var username;
-
-$("#parkButton").click(function() {
+$("#parkButton").click(function(username) {
   $.get("/api/dogs", function(req, res) {
     db.Dogs.findAll({
       where: {
