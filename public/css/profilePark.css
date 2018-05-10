@@ -1,0 +1,10 @@
+img {
+  border-style: solid;
+  border-width: 2px;
+  border-color: goldenrod;
+}
+
+#parkInfo {
+  position: relative;
+  bottom: 20px;
+}
