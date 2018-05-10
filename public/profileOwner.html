@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FaceBark</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <link rel="shortcut icon" href="http://res.freestockphotos.biz/pictures/15/15168-illustration-of-a-cartoon-dog-pv.png">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- <link href="css/style.css" rel="stylesheet"> -->
+    <link href="css/profileOwner.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- //header -->
+    <nav class="light-green lighten-1" role="navigation">
+        <div class="nav-wrapper container">
+            <a id="logo-container" href="#" class="brand-logo">FaceBark</a>
+            <ul class="right hide-on-med-and-down">
+                <li>
+                    <a href="home.html">Home</a>
+                </li>
+                <li>
+                    <a href="findPark.html">Find a Park</a>
+                </li>
+                <li>
+                    <a href="searchPark.html">Park Search</a>
+                </li>
+                <li>
+                    <a href="dogs">View all Dogs</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- main main -->
+
+    <div class="container title">
+        <div class="row">
+            <h2 class="center-align orange-text" id="welcome">Welcome, Owner!</h2>
+            <h5 class="center-align">View Your Profile Details Below</h5>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="container ownerDetails">
+        <div class="row">
+            <h5 class="email left-align col s5 offset-s1">Email: example@example.com</h5>
+            <h5 class="memberSince left-align col s5 offset-s1">Member Since: </h5>
+        </div>
+        <div class="row">
+            <h4 class="center-align col s12">Your Dogs</h4>
+        </div>
+        <!-- List of dogs, 3 per row -->
+        <div class="row center-align" id="allDogs">
+            <div class="row col s3" id="dogItem">
+                <img src="images/dog1.jpg" alt="dog pic" height="150" width="150px" class="col s6" id="dogPic">
+                <h5 id="dogName">Chewie</h5>
+                <h5 id="dogBreed">Yorkie</h5>
+            </div>
+            <div class="row col s3" id="dogItem">
+                <img src="images/dog2.jpg" alt="dog pic" height="150" width="150px" class="col s6" id="dogPic">
+                <h5 id="dogName">Rusty</h5>
+                <h5 id="dogBreed">Golden Retriever</h5>
+            </div>
+            <div class="row col s3" id="dogItem">
+                <img src="images/dog3.jpg" alt="dog pic" height="150" width="150px" class="col s6" id="dogPic">
+                <h5 id="dogName">Harris</h5>
+                <h5 id="dogBreed">Jack Russell Tarrier</h5>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <footer id="footer1" class="page-footer footer-fixed light-green lighten-1 " style="background-image:url(https://images.clipartuse.com/44e37483d02ea0cfe67a9a5f035c485c_grass-clipart-transparent-grass-clipart-free-clip-art-imagespng-_3788-974.png) ">
+        <div class="container ">
+            <div class="row ">
+                <div class="col l6 s12 ">
+                    <h5 class="white-text ">FaceBark</h5>
+                    <p class="grey-text text-lighten-4 ">"Every snack you make, every meal you bake, every bite you take, i 'll be watching you!" ~ Every dog
+                        ever
+                    </p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Links</h5>
+                    <ul>
+                        <li>
+                            <a class="grey-text text-lighten-3" href="http://www.cutestpaw.com/tag/dogs/">Dog Pictures</a>
+                        </li>
+                        <li>
+                            <a class="grey-text text-lighten-3" href="http://www.animalplanet.com/pets/dog-facts/?fact_id=113376">Dog Facts</a>
+                        </li>
+                        <li>
+                            <a class="grey-text text-lighten-3" href="http://www.discussdogs.com/forum/">Dog Forum</a>
+                        </li>
+                        <li>
+                            <a class="grey-text text-lighten-3" href="https://www.rover.com/">Dog Walking</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright footer-fixed">
+            <div class="container">
+                © 2018 Copyright Text
+                <a class="grey-text text-lighten-4 right" href="http://www.theuselessweb.com/">More Links</a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <!-- <script src="./starter-template/js/init.js"></script> -->
+    <script src="./js/materialize.min.js"></script>
+    <!-- <script src="./starter-template/js/materialize.js"></script> -->
+    <script src="./js/faceBark.js"></script>
+</body>
+
+</html>
