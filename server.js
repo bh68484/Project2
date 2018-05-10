@@ -1,11 +1,20 @@
 //Requiring dependencies
 var express = require("express");
+var app = express();
+var passport = require("passport");
+var session = require("express-session");
 var bodyParser = require("body-parser");
+var env = require("dotenv").load();
+var exphbs = require("express-handlebars");
 
 //Setting up the Express App
 var app = express();
+var http = require("http")
+  .Server(app)
+  .listen(80);
+var upload = require("express-fileupload");
 var PORT = process.env.PORT || 8080;
-var db = require("./models");
+
 var path = require("path");
 
 // Sets up the Express app to handle data parsing
@@ -21,23 +30,46 @@ app.use(
 // parse application/json
 app.use(bodyParser.json({ limit: "50mb" }));
 
+// For Passport
+app.use(
+  session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
+); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+
+app.get("/", function(req, res) {
+  res.sendFile(path.join(__dirname, "./public/home-notlogged.html"));
+});
+
 // Static directory
 app.use(express.static("public"));
 
-//Routes
+var exphbs = require("express-handlebars");
+
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
+//Routes`
 require("./routes/htmlRoutes.js")(app);
 require("./routes/apiRoutes.js")(app);
+var authRoute = require("./routes/auth.js")(app, passport);
+//load passport strategies
+require("./config/passport/passport.js")(passport, models.user);
+
+//Sync Database
+models.sequelize
+  .sync()
+  .then(function() {
+    console.log("Nice! Database looks fine");
+  })
+  .catch(function(err) {
+    console.log(err, "Something went wrong with the Database Update!");
+  });
 
 //Setting up Express to listen on port.
 app.listen(PORT, function() {
   console.log("App listening on PORT " + PORT);
 });
-
-// db.sequelize.sync({ force: true }).then(function() {
-//   app.listen(PORT, function() {
-//     console.log("App listening on PORT " + PORT);
-//   });
-// });
 
 // ======================================================================
 // this is the route to handle the app.html page
