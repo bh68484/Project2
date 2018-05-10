@@ -7,12 +7,12 @@ $(document).ready(function() {
         var picks = [];
         var holder = [];
 
-        console.log("working");
+        // console.log("working");
 
         var distance = $("#test5").val();
         var zip = $("#zipCode").val();
 
-        console.log(distance, zip);
+        // console.log(distance, zip);
 
         var distanceObj = {
             miles: distance,
@@ -37,11 +37,20 @@ $(document).ready(function() {
 
         $.post('api/parkSearch', {data: picks, distanceObj}, 
             function(returnedData){
-                console.log(returnedData);
+                // console.log(returnedData.length);
+                var dataLength = returnedData.length;
 
-                for (var i = 0; i < returnedData.length; i++) {
+                if(dataLength > 100){
+                    // console.log('limit called: ' dataLength);
+                    // console.log('called');
+                    dataLength = 100;
+                    // console.log('limit set: ' returnedData.length);
+                    console.log(dataLength);
+                }
 
-                    console.log(returnedData[i].distance);
+                for (var i = 0; i < dataLength; i++) {
+                    // console.log(i);
+                    // console.log(returnedData[i].distance);
                     if (returnedData[i].distance == undefined) {
                         // console.log('fix called');
                         returnedData[i].distance = distanceObj.miles;
@@ -50,6 +59,7 @@ $(document).ready(function() {
                     // console.log('fixed: ' + returnedData[i].distance);
 
                     if(parseInt(returnedData[i].distance) <= parseInt(distanceObj.miles)){
+                        console.log(returnedData[i].distance);
                         var park = $("<div class='park'>")
 
                         var name = $("<h4>");

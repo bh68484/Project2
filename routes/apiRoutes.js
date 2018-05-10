@@ -64,9 +64,9 @@ module.exports = function(app) {
   app.post("/api/parkSearch", function(req, res) {
     // console.log("called");
     // console.log(req.body.distanceObj);
-
+    // console.log(req.body.distanceObj.miles);
     var searchArr = req.body.data;
-    console.log(searchArr);
+    // console.log(searchArr);
     // var distanceArr = [];
     var obj = {};
 
@@ -83,13 +83,18 @@ module.exports = function(app) {
       }).then(function(dbParks) {
         var zipCode = req.body.distanceObj.zipCode;
        // var parks = generateParks(zipCode, dbParks);
-       //  console.log(parks);
+        // console.log(req.body.distanceObj.miles);
        var distanceArr = [];
 
     if(zipCode != ''){
+          var holder = 0;
           for (var i = 0; i < dbParks.length; i++) {
             var ktm = new KilometersToMiles();
-
+            // console.log('here');
+            // console.log(dbParks.length);
+            if (dbParks[i].address == '') {
+              holder++;
+            }
             if (dbParks[i].address !== '') {
               distance.get(
               {
@@ -98,13 +103,26 @@ module.exports = function(app) {
               },
               function(err, data) {
                 if (err) return console.log(err);
+                // console.log(data.distance);
+                // console.log('here');
                 distanceArr.push(ktm.get(parseInt(data.distance)));
+                // console.log(distanceArr.length);
+                // console.log(dbParks.length);
+                if(distanceArr.length + holder == dbParks.length){
+                  // console.log('called');
+                  var parks = addDistance(distanceArr, dbParks);
+                  res.json(parks);
+                }
               })
             }
           }
-          
-          var parks = addDistance(distanceArr, dbParks);
-          res.json(parks);
+          // if(distanceArr.length == dbParks.length){
+            // console.log(distanceArr);
+            // var parks = addDistance(distanceArr, dbParks);
+            // res.json(parks);
+          // }
+          // var parks = addDistance(distanceArr, dbParks);
+          // res.json(parks);
         } else {
           res.json(dbParks);
         }
@@ -117,23 +135,30 @@ module.exports = function(app) {
     
     });
     }else{
+      // console.log("called");
        db.Parks.findAll({
         // where: {
         //   [Op.or]: [obj]
         // }
 
       }).then(function(dbParks) {
+        // console.log("here");
         var zipCode = req.body.distanceObj.zipCode;
        // var parks = generateParks(zipCode, dbParks);
-       //  console.log(parks);
+        // console.log(zipCode);
        var distanceArr = [];
 
     if(zipCode != ''){
-          for (var i = 0; i < dbParks.length; i++) {;
+        // var holder = 0;
+          for (var i = 0; i < 100; i++) {;
             var ktm = new KilometersToMiles();
 
-
+            // console.log('here1');
+            // if (dbParks[i].address == '') {
+            //   holder++;
+            // }
             if (dbParks[i].address !== '') {
+              // console.log("here2");
               distance.get(
               {
                 origin: zipCode,
@@ -141,17 +166,24 @@ module.exports = function(app) {
               },
               function(err, data) {
                 if (err) return console.log(err);
+                // console.log('here');
                 distanceArr.push(ktm.get(parseInt(data.distance)));
                 // console.log(ktm.get(parseInt(data.distance)));
                 // dbParks[i].distance = data.distance;
                 // console.log(distanceArr);
+                if(distanceArr.length == 100){
+                  // console.log('called');
+                  var parks = addDistance(distanceArr, dbParks);
+                  res.json(parks);
+                }
               })
             }
           }
 
-          var parks = addDistance(distanceArr, dbParks);
-          res.json(parks);
+          // var parks = addDistance(distanceArr, dbParks);
+          // res.json(parks);
         }else{
+          // console.log('called');
           res.json(dbParks);
         }
 
@@ -167,14 +199,24 @@ module.exports = function(app) {
   });
 
   function addDistance(distanceArr, dbParks){
-        // console.log("working");
-        for (var i = 0; i < dbParks.length; i++) {
-          // console.log("running");
-          dbParks[i].dataValues.distance = distanceArr[i];
-          // console.log(dbParks[i].dataValues.distance);
-          // console.log(distanceArr[i]);
+        // console.log(distanceArr);
+        if(distanceArr.length === 100){
+          for (var i = 0; i < 100; i++) {
+            // console.log("running");
+            dbParks[i].dataValues.distance = distanceArr[i];
+            // console.log(dbParks[i].dataValues.distance);
+            // console.log(distanceArr[i]);
+          }
+          return dbParks;
+        }else{
+          for (var i = 0; i < dbParks.length; i++) {
+            // console.log("running");
+            dbParks[i].dataValues.distance = distanceArr[i];
+            // console.log(dbParks[i].dataValues.distance);
+            // console.log(distanceArr[i]);
+          }
+          return dbParks;
         }
-        return dbParks;
       }
 
 
