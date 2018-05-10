@@ -19,6 +19,10 @@ module.exports = function(sequelize, Sequelize) {
       primaryKey: true,
       type: Sequelize.INTEGER
     },
+    username: {
+      type: Sequelize.STRING,
+      notEmpty: true
+    },
 
     firstname: {
       type: Sequelize.STRING,
