@@ -1,13 +1,56 @@
-module.exports = function(sequelize, DataTypes) {
-  var User = sequelize.define("User", {
-    name: DataTypes.STRING
-  });
+// module.exports = function(sequelize, DataTypes) {
+//   var User = sequelize.define("User", {
+//     name: DataTypes.STRING
+//   });
 
-  User.associate = function(models) {
-    User.hasMany(models.Dog, {
-      onDelete: "casecade"
-    });
-  };
+//   User.associate = function(models) {
+//     User.hasMany(models.Dog, {
+//       onDelete: "casecade"
+//     });
+//   };
+
+//   return User;
+// };
+
+module.exports = function(sequelize, Sequelize) {
+  var User = sequelize.define("user", {
+    id: {
+      autoIncrement: true,
+      primaryKey: true,
+      type: Sequelize.INTEGER
+    },
+
+    firstname: {
+      type: Sequelize.STRING,
+      notEmpty: true
+    },
+
+    lastname: {
+      type: Sequelize.STRING,
+      notEmpty: true
+    },
+
+    email: {
+      type: Sequelize.STRING,
+      validate: {
+        isEmail: true
+      }
+    },
+
+    password: {
+      type: Sequelize.STRING,
+      allowNull: false
+    },
+
+    last_login: {
+      type: Sequelize.DATE
+    },
+
+    status: {
+      type: Sequelize.ENUM("active", "inactive"),
+      defaultValue: "active"
+    }
+  });
 
   return User;
 };

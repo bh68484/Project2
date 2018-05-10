@@ -4,20 +4,19 @@ module.exports = function(sequelize, DataTypes) {
     breed: DataTypes.STRING,
     picture: DataTypes.STRING,
     gender: {
-      type: DataTypes.ENUM,
-      values: ["male", "female"]
+      type: DataTypes.BOOLEAN
     },
     description: DataTypes.STRING,
     likes_dogs: DataTypes.BOOLEAN,
     likes_people: DataTypes.BOOLEAN
   });
 
-  Dog.associate = function(models) {
-    Dog.belongsTo(models.User, {
-      foreignKey: {
-        allowNull: true
-      }
-    });
-  };
+  //   Dog.associate = function(models) {
+  //     Dog.belongsTo(models.User, {
+  //       foreignKey: {
+  //         allowNull: true
+  //       }
+  //     });
+  //   };
   return Dog;
 };
