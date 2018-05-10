@@ -4,6 +4,10 @@ var bodyParser = require("body-parser");
 
 //Setting up the Express App
 var app = express();
+var http = require("http")
+  .Server(app)
+  .listen(80);
+var upload = require("express-fileupload");
 var PORT = process.env.PORT || 8080;
 var db = require("./models");
 var path = require("path");
