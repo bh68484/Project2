@@ -9,6 +9,10 @@ var exphbs = require("express-handlebars");
 
 //Setting up the Express App
 var app = express();
+var http = require("http")
+  .Server(app)
+  .listen(80);
+var upload = require("express-fileupload");
 var PORT = process.env.PORT || 8080;
 
 var path = require("path");
@@ -40,20 +44,12 @@ app.get("/", function(req, res) {
 // Static directory
 app.use(express.static("public"));
 
-//For Handlebars
-app.set("views", "./views");
-app.engine(
-  "hbs",
-  exphbs({
-    extname: ".hbs"
-  })
-);
-app.set("view engine", ".hbs");
+var exphbs = require("express-handlebars");
 
-var models = require("./models");
-//code from my project - models in this one is db
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 
-//Routes
+//Routes`
 require("./routes/htmlRoutes.js")(app);
 require("./routes/apiRoutes.js")(app);
 var authRoute = require("./routes/auth.js")(app, passport);

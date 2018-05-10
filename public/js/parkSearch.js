@@ -6,50 +6,62 @@ $(document).ready(function() {
     $(document).on('click','#parkSearch', function(event){
         var picks = [];
         var holder = [];
-
-        console.log("working");
-
+        var distanceObj = {};
         var distance = $("#test5").val();
         var zip = $("#zipCode").val();
 
-        console.log(distance, zip);
-
-        var distanceObj = {
+        distanceObj = {
             miles: distance,
             zipCode: zip
         };
 
         for (var i = 0; i < choiceArr.length; i++){
+        
             if ($(choiceArr[i]).is(":checked"))
             {   
+                $(choiceArr[i]).prop('checked', false);
+            
                 holder = [];
                 choiceArr[i] = choiceArr[i].replace('#','');
                 var choice = "yes";
-                // choice = choice.replace(/['"]+/g, '');
-                // console.log(choice);
                 holder.push(choiceArr[i], choice);
                 picks.push(holder);
-                // console.log(someStr.replace(/["]+/g, ''));
+                choiceArr[i] = choiceArr[i].replace('','#');
             }
         }
 
-
+        console.log(picks);
 
         $.post('api/parkSearch', {data: picks, distanceObj}, 
             function(returnedData){
-                console.log(returnedData);
+                
+                $('#results').empty();
+                var dataLength = returnedData.length;
 
-                for (var i = 0; i < returnedData.length; i++) {
+                if(dataLength > 100){
+            
+                    dataLength = 100;
+                    
+                    console.log(dataLength);
+                }
 
-                    console.log(returnedData[i].distance);
+                for (var i = 0; i < dataLength; i++) {
+                
                     if (returnedData[i].distance == undefined) {
-                        // console.log('fix called');
+                    
                         returnedData[i].distance = distanceObj.miles;
                     }
 
-                    // console.log('fixed: ' + returnedData[i].distance);
 
                     if(parseInt(returnedData[i].distance) <= parseInt(distanceObj.miles)){
+                        console.log(returnedData[i].distance);
+
+                        if($("#results").text() == 'No Results Within Range'){
+                            $('#results').empty();
+                        }
+                        
+                        // console.log($("#results").text());
+
                         var park = $("<div class='park'>")
 
                         var name = $("<h4>");
@@ -89,14 +101,13 @@ $(document).ready(function() {
                         park.append(info, btnDiv, spacer);
                         // $("#title").append(name);
                         $("#results").append(park);
-                    } else{
-                        $("#results").html("No Results Within Range");
+                    } else if( $('#results').is(':empty') ) {
+                        $("#results").append("No Results Within Range");
                     }
                 }
-                
-            });
-
-        // console.log(picks);
-
+            }); 
+ 
         });
+
+   
 });
