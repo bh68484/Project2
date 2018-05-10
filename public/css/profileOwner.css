@@ -1,0 +1,39 @@
+#dogItem {
+  border-style: dotted;
+  border-width: 2px;
+  border-color: lightcoral;
+  margin-right: 5px;
+  padding: 0;
+}
+
+#allDogs {
+  position: relative;
+  left: 125px;
+}
+
+#dogPic {
+  padding: 0;
+  padding-right: 5px;
+}
+
+#dogName {
+  position: relative;
+  right: 5px;
+  top: 10px;
+}
+
+#dogBreed {
+  position: relative;
+  top: 15px;
+  right: 5px;
+}
+
+#footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
+}
