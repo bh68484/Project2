@@ -9,7 +9,7 @@ module.exports = function(sequelize, DataTypes) {
     field: DataTypes.STRING,
     url: DataTypes.STRING,
     lat: DataTypes.STRING,
-    lon: DataTypes.STRING 
+    lon: DataTypes.STRING
   });
 
   return Parks;

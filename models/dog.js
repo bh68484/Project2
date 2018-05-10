@@ -11,12 +11,12 @@ module.exports = function(sequelize, DataTypes) {
     likes_people: DataTypes.BOOLEAN
   });
 
-  Dog.associate = function(models) {
-    Dog.belongsTo(models.User, {
-      foreignKey: {
-        allowNull: true
-      }
-    });
-  };
+  //   Dog.associate = function(models) {
+  //     Dog.belongsTo(models.User, {
+  //       foreignKey: {
+  //         allowNull: true
+  //       }
+  //     });
+  //   };
   return Dog;
 };
