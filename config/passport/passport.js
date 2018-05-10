@@ -31,7 +31,6 @@ module.exports = function(passport, user) {
         usernameField: "email",
 
         passwordField: "password",
-        
 
         passReqToCallback: true // allows us to pass back the entire request to the callback
       },
@@ -54,6 +53,8 @@ module.exports = function(passport, user) {
             var userPassword = generateHash(password);
 
             var data = {
+              username: req.body.username,
+
               email: email,
 
               password: userPassword,
