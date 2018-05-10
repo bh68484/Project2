@@ -26,4 +26,6 @@ module.exports = function(app) {
       res.render("dogs", { dogs: data });
     });
   });
+
+  app.get("/dogs/:id", function(req, res) {});
 };
