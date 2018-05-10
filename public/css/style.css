@@ -16,6 +16,20 @@ footer {
   background-color: #efefef;
 }
 
+.authBtn {
+  position: fixed;
+}
+
+#createProfile {
+  left: 1000px;
+  top: 15px;
+}
+
+#signIn {
+  left: 1150px;
+  top: 15px;
+}
+
 .icon-block {
   padding: 0 15px;
 }
