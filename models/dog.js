@@ -4,8 +4,7 @@ module.exports = function(sequelize, DataTypes) {
     breed: DataTypes.STRING,
     picture: DataTypes.STRING,
     gender: {
-      type: DataTypes.ENUM,
-      values: ["male", "female"]
+      type: DataTypes.BOOLEAN
     },
     description: DataTypes.STRING,
     likes_dogs: DataTypes.BOOLEAN,

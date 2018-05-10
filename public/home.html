@@ -76,13 +76,10 @@
                             <form class="col s12">
                                 <div class="row">
                                     <div class="file-field input-field col s6">
-                                        <div class="btn">
-                                            <span>File</span>
-                                            <input type="file">
-                                        </div>
-                                        <div class="file-path-wrapper">
-                                            <input class="file-path validate" type="text" id="dogPic" placeholder="Upload a Pupper Pic">
-                                        </div>
+                                        <form ref='uploadForm' placeholder="Dog Picture" id='uploadForm' action="/picupload" method='post' encType="multipart/form-data">
+                                            <input type="file" name="sampleFile" />
+                                            <input type='submit' value='Upload!' />
+                                        </form>
                                     </div>
                                     <div class="input-field col s6">
                                         <select id="gender">
@@ -121,86 +118,6 @@
                                     </div>
                                 </div>
                             </form>
-                        </div>
-                        <div class="row">
-                            <h5>Create a Profile</h5>
-                            <div class="input-field col s6">
-                                <input id="email" type="email" class="validate">
-                                <label for="email">Email</label>
-                            </div>
-                            <div class="input-field col s6">
-                                <input id="password" type="password" class="validate">
-                                <label for="password">Create a Password</label>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <a href="#!" class="modal-close waves-effect waves-green btn-flat" id="submit">Submit</a>
-
-                        </div>
-
-                        <br>
-                        <br>
-                        <h5 class="header col s12 light">Or</h5>
-                        <h5 class="header col s12 light">Select a Dog or Owner Below</h5>
-                        <br>
-                        <br>
-                        <br>
-                        <div class="row">
-                            <div class="input-field col s12 m6">
-                                <select class="icons">
-                                    <option value="" disabled selected>Choose a Dog</option>
-                                    <option value="" data-icon="./images/dog1.jpg">Harris</option>
-                                    <option value="" data-icon="./images/dog2.jpg">Rusty</option>
-                                    <option value="" data-icon="./images/dog3.jpg">Homer</option>
-                                </select>
-                                <label>Dog</label>
-                            </div>
-                            <div class="input-field col s12 m6">
-                                <select class="icons">
-                                    <option value="" disabled selected>Choose an Owner</option>
-                                    <option value="" data-icon="./images/dog1.jpg" class="left">Jane D.</option>
-                                    <option value="" data-icon="./images/dog2.jpg" class="left">John B.</option>
-                                    <option value="" data-icon="./images/dog3.jpg" class="left">Kevin K.</option>
-                                </select>
-                                <label>Owner</label>
-                            </div>
-                        </div>
-
-                    </div>
-                    <br>
-                    <br>
-                    <h5 class="header col s12 light">Or</h5>
-                    <h5 class="header col s12 light">Select a Dog or Owner Below</h5>
-                    <br>
-                    <br>
-                    <br>
-                    <div class="row">
-                        <div class="input-field col s12 m6">
-                            <select class="icons">
-                                <option value="" disabled selected>Choose a Dog</option>
-                                <option value="" data-icon="./images/dog1.jpg">Harris</option>
-                                <option value="" data-icon="./images/dog2.jpg">Rusty</option>
-                                <option value="" data-icon="./images/dog3.jpg">Homer</option>
-                            </select>
-                            <label>Dog</label>
-                        </div>
-                        <div class="input-field col s12 m6">
-                            <select class="icons">
-                                <option value="" disabled selected>Choose an Owner</option>
-                                <option value="" data-icon="./images/dog1.jpg" class="left">Jane D.</option>
-                                <option value="" data-icon="./images/dog2.jpg" class="left">John B.</option>
-                                <option value="" data-icon="./images/dog3.jpg" class="left">Kevin K.</option>
-                            </select>
-                            <label>Owner</label>
-                        </div>
-                        <div class="input-field col s12 m6">
-                            <select class="icons">
-                                <option value="" disabled selected>Choose an Owner</option>
-                                <option value="" data-icon="./images/dog1.jpg" class="left">Jane D.</option>
-                                <option value="" data-icon="./images/dog2.jpg" class="left">John B.</option>
-                                <option value="" data-icon="./images/dog3.jpg" class="left">Kevin K.</option>
-                            </select>
-                            <label>Owner</label>
                         </div>
                     </div>
                 </div>
