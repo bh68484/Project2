@@ -67,7 +67,7 @@ module.exports = function(app) {
     // console.log(req.body.distanceObj.miles);
     var searchArr = req.body.data;
     // console.log(searchArr);
-    // var distanceArr = [];
+    // var distanceArr = [] ;
     var obj = {};
 
     if(searchArr !== undefined){

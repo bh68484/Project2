@@ -49,7 +49,7 @@ $(document).ready(function() {
                 }
 
                 for (var i = 0; i < dataLength; i++) {
-                    // console.log(i);
+                    // console.log(i) ;
                     // console.log(returnedData[i].distance);
                     if (returnedData[i].distance == undefined) {
                         // console.log('fix called');
