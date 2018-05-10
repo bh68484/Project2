@@ -15,25 +15,11 @@ $("#submit").click(function() {
   var dogName = $("#dog-name").val();
   var dogBreed = $("#dog-breed").val();
   var dogPic = $("#dogPic").val();
-
   var gender = $("#gender").val();
-
   var kids = $("#kids").prop("checked");
-
   var otherDogs = $("#otherDogs").prop("checked");
-
-  // var owner = $("#owner-name")
-  //   .val()
-  //
   var dogComment = $("#dogComment").val();
-  // var email = $("#email")
-  //   .val()
-  //
-  // var password = $("#password")
-  //   .val()
-  //
-
-  console.log(dogName, dogBreed);
+  //console.log(dogName, dogBreed);
 
   var dogObject = {
     dogName: dogName,
@@ -48,6 +34,17 @@ $("#submit").click(function() {
   console.log(dogObject);
   $.post("/api/newDog", dogObject).then(function(data) {
     console.log(data);
+  });
+
+  $.ajax({
+    url: "/uploadpic",
+    type: "POST",
+    data: dogObject.dogPic,
+    processData: false,
+    contentType: false,
+    success: function(data) {
+      console.log("upload successful!");
+    }
   });
 });
 

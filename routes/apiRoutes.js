@@ -168,18 +168,21 @@ module.exports = function(app) {
       }
 
 
-  //Posting new profiles through Dogs.js model
-  // app.post("/api/newDog", function(req, res) {
-  //   console.log("New Profile:  ");
-  //   console.log(req.body);
-  //   db.Dog.create({
-  //     name: req.body.dogName,
-  //     breed: req.body.dogBreed,
-  //     picture: req.body.dogPic,
-  //     gender: req.body.gender,
-  //     description: req.body.dogDescription,
-  //     likes_dogs: req.body.otherDogs,
-  //     likes_people: req.body.kids
-  //   });
-  // });
+  // Posting new profiles through Dogs.js model
+  app.post("/api/newDog", function(req, res) {
+    console.log("New Profile:  ");
+    console.log(req.body);
+    db.Dog.create({
+      name: req.body.dogName,
+      breed: req.body.dogBreed,
+      picture: req.body.dogPic,
+      gender: req.body.gender,
+      description: req.body.dogDescription,
+      likes_dogs: req.body.otherDogs,
+      likes_people: req.body.kids
+    });
+  });
+
+
+  app.post("/uploadpic", function(req, res) {});
 };
