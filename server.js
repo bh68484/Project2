@@ -24,7 +24,12 @@ app.use(bodyParser.json({ limit: "50mb" }));
 // Static directory
 app.use(express.static("public"));
 
-//Routes
+var exphbs = require("express-handlebars");
+
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
+//Routes`
 require("./routes/htmlRoutes.js")(app);
 require("./routes/apiRoutes.js")(app);
 

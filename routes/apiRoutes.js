@@ -11,7 +11,7 @@ var googleMapsClient = require("@google/maps").createClient({
 });
 
 // var reverseGeocode = require('latlng-to-zip');
-var distance = require('google-distance');
+var distance = require("google-distance");
 var KilometersToMiles = require("kilometers-to-miles");
 
 module.exports = function(app) {
@@ -70,7 +70,7 @@ module.exports = function(app) {
     // var distanceArr = [];
     var obj = {};
 
-    if(searchArr !== undefined){
+    if (searchArr !== undefined) {
       searchArr.forEach(function(data) {
         obj[data[0]] = data[1];
       });
@@ -79,9 +79,9 @@ module.exports = function(app) {
         where: {
           [Op.or]: [obj]
         }
-
       }).then(function(dbParks) {
         var zipCode = req.body.distanceObj.zipCode;
+
        // var parks = generateParks(zipCode, dbParks);
         // console.log(req.body.distanceObj.miles);
        var distanceArr = [];
@@ -137,13 +137,14 @@ module.exports = function(app) {
     }else{
       // console.log("called");
        db.Parks.findAll({
+
         // where: {
         //   [Op.or]: [obj]
         // }
-
       }).then(function(dbParks) {
         // console.log("here");
         var zipCode = req.body.distanceObj.zipCode;
+
        // var parks = generateParks(zipCode, dbParks);
         // console.log(zipCode);
        var distanceArr = [];
@@ -189,11 +190,8 @@ module.exports = function(app) {
 
         // console.log('distanceObj: ' + req.body.distanceObj.miles);
         // res.json(parks);
-      // if (true) {
-
-      
-    
-    });
+        // if (true) {
+      });
     }
     // console.log("dbCalled");
   });
