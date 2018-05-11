@@ -45,7 +45,7 @@ $(document).ready(function() {
                     console.log(dataLength);
                 }
 
-                for (var i = 0; i < dataLength; i++) {
+                for (var i = 0; i < 15; i++) {
                 
                     if (returnedData[i].distance == undefined) {
                     
@@ -61,11 +61,12 @@ $(document).ready(function() {
                         }
                         
                         // console.log($("#results").text());
+                        $('#searchFunctions').addClass('border');
 
                         var park = $("<div class='park'>")
 
                         var name = $("<h4>");
-                        name.append(returnedData[i].name);
+                        name.append(i+1 + '. ' + returnedData[i].name);
 
                         var address = $("<p>");
                         address.append("- Address: " + returnedData[i].address);
@@ -88,13 +89,13 @@ $(document).ready(function() {
                         var list = $("<ul class='container'>");
                         list.append(dogPark, restroom, greenway, field, trails);
 
-                        var info = $("<div id='info' class='container'>");
+                        var info = $("<div id='info' class=''>");
                         info.append(name, address, list);
 
                         var parkbtn = $("<button class='waves-effect waves-light btn' id='parkButton'>");
                         parkbtn.append("Go To Park");
 
-                        var btnDiv = $("<div id='buttonDiv'>");
+                        var btnDiv = $("<div id='buttonDiv' class='container modal-trigger' data-target='modal1' href='#modal1'>");
                         btnDiv.append(parkbtn);
 
                         var spacer = $("<div id='spacer'>");
@@ -109,5 +110,35 @@ $(document).ready(function() {
  
         });
 
-   
+$("#buttonDiv").click(function(username) {
+  $.get("/api/dogs", function(req, res) {
+    db.Dogs.findAll({
+      where: {
+        username: username
+      }
+    }).then(function(dbDogs) {
+      console.log(dbDogs);
+
+      var newLine = $("<p>");
+      var newLabel = $("<label>");
+      var newInput = $("<input type='checkbox' />");
+      var newSpan = $("<span>" + dbDogs.name + "</span>");
+      newLabel.attr("for", dbDogs.name);
+      newInput.attr("id", dbDogs.name);
+
+      newInput.append(newSpan);
+      newLabel.append(newInput);
+      newLine.appendI(newLabel);
+
+      $("#dogsToTake").append(newLine);
+    });
+  });
+});
+
+$("#letsGo").click(function(username) {
+    console.log('clicked');
+  $.get("/findPark2", function(req, res) {
+  });
+});
+
 });

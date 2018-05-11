@@ -2,17 +2,19 @@
   position: relative;
   top: 250px;
   left: 50px;
-
-
 }
 
+.border{
+  border-bottom: 1px solid grey;
+}
 
 #buttonDiv {
   text-align: right;
 }
 
 #results {
-  font-size: 20px;
+  margin-top: 50px;
+  font-size: 22px;
 }
 
 #nameDiv {
@@ -25,6 +27,7 @@
 
 #parkSearch {
   top: 30px;
+  margin-bottom: 50px;
 }
 
 #spacer {
