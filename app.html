@@ -21,24 +21,24 @@
       // var person = $(this).attr("data-person");
 
       // Constructing a URL to search Giphy for the name of the person who said the quote
-      // var queryURL = "https://services1.arcgis.com/a7CWfuGP5ZnLYE7I/arcgis/rest/services/Wake_Parks_Public/FeatureServer/0/query?where=1%3D1&outFields=NAME,ADDRESS,URL,DOGPARK,GREENWAYACCESS,MULTIPURPOSEFIELD,RESTROOMS,WALKINGTRAILS,Lat,Lon&outSR=4326&f=json";
+      var queryURL = "https://services1.arcgis.com/a7CWfuGP5ZnLYE7I/arcgis/rest/services/Wake_Parks_Public/FeatureServer/0/query?where=1%3D1&outFields=NAME,ADDRESS,URL,DOGPARK,GREENWAYACCESS,MULTIPURPOSEFIELD,RESTROOMS,WALKINGTRAILS,Lat,Lon&outSR=4326&f=json";
 
-      // // Performing our AJAX GET request
-      // $.ajax({
-      //     url: queryURL,
-      //     method: "GET"
-      //   })
-      //   // After the data comes back from the API
-      //   .then(function(response) {
-      //     var myResponse = JSON.parse(response);
+      // Performing our AJAX GET request
+      $.ajax({
+          url: queryURL,
+          method: "GET"
+        })
+        // After the data comes back from the API
+        .then(function(response) {
+          var myResponse = JSON.parse(response);
           
-      //     $.post("/dataSet", myResponse)
-      //     // After the data comes back from the API
-      //     .then(function(data) {
-      //       // var myResponse = JSON.parse(response);
+          $.post("/dataSet", myResponse)
+          // After the data comes back from the API
+          .then(function(data) {
+            // var myResponse = JSON.parse(response);
              
-      //     });
-      //   });
+          });
+        });
 
     });
   </script>

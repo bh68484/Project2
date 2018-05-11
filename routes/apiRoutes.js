@@ -179,27 +179,43 @@ module.exports = function(app, user) {
       userId: req.user.id
     });
   });
-  //console.log(req.user.id);
-
-
-  // Posting new profiles through Dogs.js model
-  // app.post("/api/newDog", function(req, res) {
-  //   console.log("New Profile:  ");
-  //   console.log(req.body);
-  //   db.Dog.create({
-  //     name: req.body.dogName,
-  //     breed: req.body.dogBreed,
-  //     picture: req.body.dogPic,
-  //     gender: req.body.gender,
-  //     description: req.body.dogDescription,
-  //     likes_dogs: req.body.otherDogs,
-  //     likes_people: req.body.kids
-  //   });
 
   app.post("/picupload", function(req, res) {
     if (req.files) {
       console.log(req.files);
     }
+  });
 
+  app.put("/api/addDogToPark/:parkid/:dogid", function(req, res) {
+    console.log(req.params.dogId, req.params.parkid);
+    db.dog
+      .update(
+        { parkId: req.params.parkid },
+        { where: { id: req.params.dogid } }
+      )
+      .then(function(dbDogs) {
+        res.json(dbDogs);
+      });
+  });
+
+  //Find all the dogs in a park
+  app.get("/api/dogsInPark/:parkid", function(req, res) {
+    db.dog
+      .findAll({
+        where: { parkId: req.params.parkid }
+      })
+      .then(function(dbDog) {
+        res.json(dbDog);
+      });
+  });
+
+  app.get("/api/getUsersDogs/:userid", function(req, res) {
+    db.dog
+      .findAll({
+        where: { userId: req.params.userid }
+      })
+      .then(function(dbDogs) {
+        res.json(dbDogs);
+      });
   });
 };

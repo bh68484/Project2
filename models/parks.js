@@ -12,5 +12,9 @@ module.exports = function(sequelize, DataTypes) {
     lon: DataTypes.STRING
   });
 
+  Parks.associate = function(models) {
+    Parks.hasMany(models.dog, { as: "Dogs" });
+  };
+
   return Parks;
 };

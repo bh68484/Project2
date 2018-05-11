@@ -90,7 +90,7 @@ app.post("/dataSet", function(req, res) {
   console.log(res);
   // console.log(myResponse.features[0].attributes, myResponse.features[0].attributes.LAT);
   for (var i = 0; myResponse.features.length > i; i++) {
-    db.parks.create({
+    models.parks.create({
       name: myResponse.features[i].attributes.NAME,
       address: myResponse.features[i].attributes.ADDRESS,
       dogpark: myResponse.features[i].attributes.DOGPARK,
