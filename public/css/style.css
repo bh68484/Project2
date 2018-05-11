@@ -18,6 +18,7 @@ footer {
 
 .authBtn {
   position: fixed;
+  padding-left: 10px;
 }
 
 #createProfile {
