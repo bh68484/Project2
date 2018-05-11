@@ -6,10 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>FaceBark</title>
-    <link rel="shortcut icon" href="http://res.freestockphotos.biz/pictures/15/15168-illustration-of-a-cartoon-dog-pv.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <link rel="shortcut icon" href="http://res.freestockphotos.biz/pictures/15/15168-illustration-of-a-cartoon-dog-pv.png">
     <script src="https://code.jquery.com/jquery.js"></script>
-
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
@@ -22,22 +21,24 @@
             <a id="logo-container" href="#" class="brand-logo">FaceBark</a>
             <ul class="right hide-on-med-and-down">
                 <li>
-                    <a class="modal-trigger" href="#modal1">Add a Dog</a>
-                </li>
-                <li>
                     <a href="findPark.html">Find a Park</a>
                 </li>
                 <li>
-                    <a href="/logout">Log out:{{username}}</a>
+                    <a href="searchPark.html">Park Search</a>
+                </li>
+                <li>
+                    <a href="dogs">View all Dogs</a>
                 </li>
             </ul>
         </div>
     </nav>
 
-    <!-- main body -->
+    <!-- main main -->
 
     <div class="section no-pad-bot" id="index-banner">
         <div class="container">
+            <br>
+            <br>
             <br>
             <h1 class="header center orange-text">FaceBark</h1>
             <div class="row center">
@@ -46,8 +47,7 @@
             <img src="http://www.jokyland.com/content/pictures/608.gif" align="center" id="dogGif">
 
             <div class="row center">
-
-
+                <!-- Modal Trigger -->
                 <button data-target="modal1" class="btn modal-trigger" href="#modal1">Add a New Dog</button>
 
                 <!-- Modal Structure -->
@@ -133,14 +133,13 @@
         <br>
         <br>
         <br>
-
-        <footer class="page-footer light-green lighten-1" style="background-image:url(https://images.clipartuse.com/44e37483d02ea0cfe67a9a5f035c485c_grass-clipart-transparent-grass-clipart-free-clip-art-imagespng-_3788-974.png)">
-            <div class="container">
-                <div class="row">
-                    <div class="col l6 s12">
-                        <h5 class="white-text">FaceBark</h5>
-                        <p class="grey-text text-lighten-4">"Every snack you make, every meal you bake, every bite you take, i'll be watching you!" ~ Every dog
-                            ever
+        <footer id="footer1" class="page-footer footer-fixed light-green lighten-1 " style="background-image:url(https://images.clipartuse.com/44e37483d02ea0cfe67a9a5f035c485c_grass-clipart-transparent-grass-clipart-free-clip-art-imagespng-_3788-974.png) ">
+            <div class="container ">
+                <div class="row ">
+                    <div class="col l6 s12 ">
+                        <h5 class="white-text ">FaceBark</h5>
+                        <p class="grey-text text-lighten-4 ">"Every snack you make, every meal you bake, every bite you take, i 'll be watching you!" ~ Every
+                            dog ever
                         </p>
                     </div>
                     <div class="col l4 offset-l2 s12">
@@ -162,23 +161,19 @@
                     </div>
                 </div>
             </div>
-            <div class="footer-copyright">
+            <div class="footer-copyright footer-fixed">
                 <div class="container">
                     © 2018 Copyright Text
                     <a class="grey-text text-lighten-4 right" href="http://www.theuselessweb.com/">More Links</a>
                 </div>
             </div>
         </footer>
-
-
-
+        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+        <!-- <script src="./starter-template/js/init.js"></script> -->
+        <script src="./js/materialize.min.js"></script>
+        <!-- <script src="./starter-template/js/materialize.js"></script> -->
+        <script src="./js/faceBark.js"></script>
 </body>
-<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
-<!-- <script src="./starter-template/js/init.js"></script> -->
-<script src="./js/materialize.min.js"></script>
-
-<!-- <script src="./starter-template/js/materialize.js"></script> -->
-<script src="./js/faceBark.js"></script>
 
 </html>
