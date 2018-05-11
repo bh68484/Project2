@@ -27,11 +27,11 @@ module.exports = function(app) {
     });
   });
 
-<<<<<<< HEAD
+
   app.get("/findPark2", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/findPark2.html"));
   });
-=======
+
   app.get("/dogs/:id", function(req, res) {});
->>>>>>> 7911fd4b042874f91e4da91eacfefeb5c6cd2360
+
 };
