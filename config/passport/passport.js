@@ -10,6 +10,7 @@ module.exports = function(passport, user) {
   passport.serializeUser(function(user, done) {
     done(null, user.id);
   });
+  console.log(passport);
 
   // deserialize user
   passport.deserializeUser(function(id, done) {

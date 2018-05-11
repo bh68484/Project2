@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  var Parks = sequelize.define("Parks", {
+  var Parks = sequelize.define("parks", {
     name: DataTypes.STRING,
     address: DataTypes.STRING,
     dogpark: DataTypes.STRING,
