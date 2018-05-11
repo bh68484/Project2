@@ -15,7 +15,7 @@ $("#submit").click(function() {
 
   var dogName = $("#dog-name").val();
   var dogBreed = $("#dog-breed").val();
-  var dogPic = $("#dogPic").val();
+  //var dogPic = $("#dogPic").val();
   var gender = $("#gender").val();
   var kids = $("#kids").prop("checked");
   var otherDogs = $("#otherDogs").prop("checked");
@@ -25,7 +25,7 @@ $("#submit").click(function() {
   var dogObject = {
     dogName: dogName,
     dogBreed: dogBreed,
-    dogPic: dogPicture,
+    //dogPic: dogPicture,
     gender: gender,
     dogDescription: dogComment,
     otherDogs: otherDogs,
@@ -49,19 +49,19 @@ document.addEventListener("DOMContentLoaded", function() {
 
 // Or with jQuery
 
-$("#dogPic").on("change", function(ev) {
-  var file = ev.target.files[0];
-  // console.log(ev.target.files[0]);
-  // console.log("Picture Upload Works");
+// $("#dogPic").on("change", function(ev) {
+//   var file = ev.target.files[0];
+//   // console.log(ev.target.files[0]);
+//   // console.log("Picture Upload Works");
 
-  var reader = new FileReader();
-  console.log(reader);
-  reader.onloadend = function(e) {
-    console.log(e.target.result);
-    dogPicture = e.target.result;
-  };
-  reader.readAsDataURL(file);
-});
+//   var reader = new FileReader();
+//   console.log(reader);
+//   reader.onloadend = function(e) {
+//     console.log(e.target.result);
+//     dogPicture = e.target.result;
+//   };
+//   reader.readAsDataURL(file);
+// });
 
 $(document).ready(function() {
   var dogBreedsList = [];
