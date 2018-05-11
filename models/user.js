@@ -21,7 +21,8 @@ module.exports = function(sequelize, Sequelize) {
     },
     username: {
       type: Sequelize.STRING,
-      notEmpty: true
+      notEmpty: true,
+      foreignKey: true
     },
 
     firstname: {
@@ -55,6 +56,12 @@ module.exports = function(sequelize, Sequelize) {
       defaultValue: "active"
     }
   });
+
+  User.associate = function(models) {
+    User.hasMany(models.dog, {
+      onDelete: "cascade"
+    });
+  };
 
   return User;
 };
