@@ -14,7 +14,7 @@ var googleMapsClient = require("@google/maps").createClient({
 var distance = require("google-distance");
 var KilometersToMiles = require("kilometers-to-miles");
 
-module.exports = function(app) {
+module.exports = function(app, user) {
   //Getting the park data used by Google Maps App
   app.get("/api/parks", function(req, res) {
     db.Parks.findAll({}).then(function(dbParks) {
@@ -22,27 +22,27 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/parks/locationsearch", function(req, res) {
-    googleMapsClient.distanceMatrix(
-      {
-        origins: [
-          "1600 Amphitheatre Parkway, Mountain View, CA",
-          "15 E. Peace St. Raleigh, NC"
-        ],
-        destinations: ["Cary, NC"],
-        mode: "driving"
-      },
-      function(err, response) {
-        if (!err) {
-          console.log(err);
-          res.json(response);
-          console.log("No Error in Distance Search");
-        } else {
-          console.log(err);
-        }
-      }
-    );
-  });
+  // app.get("/api/parks/locationsearch", function(req, res) {
+  //   googleMapsClient.distanceMatrix(
+  //     {
+  //       origins: [
+  //         "1600 Amphitheatre Parkway, Mountain View, CA",
+  //         "15 E. Peace St. Raleigh, NC"
+  //       ],
+  //       destinations: ["Cary, NC"],
+  //       mode: "driving"
+  //     },
+  //     function(err, response) {
+  //       if (!err) {
+  //         console.log(err);
+  //         res.json(response);
+  //         console.log("No Error in Distance Search");
+  //       } else {
+  //         console.log(err);
+  //       }
+  //     }
+  //   );
+  // });
 
   //Getting all dogs
   app.get("/api/dogs", function(req, res) {
@@ -162,16 +162,20 @@ module.exports = function(app) {
   app.post("/api/newDog", function(req, res) {
     console.log("New Profile:  ");
     console.log(req.body);
-    db.Dog.create({
+    console.log(req.user);
+
+    db.dog.create({
       name: req.body.dogName,
       breed: req.body.dogBreed,
       picture: req.body.dogPic,
       gender: req.body.gender,
       description: req.body.dogDescription,
       likes_dogs: req.body.otherDogs,
-      likes_people: req.body.kids
+      likes_people: req.body.kids,
+      userId: req.user.id
     });
   });
+  //console.log(req.user.id);
 
   app.post("/picupload", function(req, res) {
     if (req.files) {

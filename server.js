@@ -54,7 +54,7 @@ app.set("view engine", ".hbs");
 var models = require("./models");
 //Routes`
 require("./routes/htmlRoutes.js")(app);
-require("./routes/apiRoutes.js")(app);
+require("./routes/apiRoutes.js")(app, models.User);
 var authRoute = require("./routes/auth.js")(app, passport);
 //load passport strategies
 require("./config/passport/passport.js")(passport, models.user);
@@ -108,7 +108,7 @@ app.listen(PORT, function() {
 // ------------------------------------------------
 // this will drop and sync the table every time its run
 
-// db.sequelize.sync({ force: true }).then(function() {
+// models.sequelize.sync({ force: true }).then(function() {
 //   app.listen(PORT, function() {
 //     console.log("App listening on PORT " + PORT);
 //   });

@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  var Dog = sequelize.define("Dog", {
+  var Dog = sequelize.define("dog", {
     name: DataTypes.STRING,
     breed: DataTypes.STRING,
     picture: DataTypes.STRING,
@@ -11,12 +11,10 @@ module.exports = function(sequelize, DataTypes) {
     likes_people: DataTypes.BOOLEAN
   });
 
-  //   Dog.associate = function(models) {
-  //     Dog.belongsTo(models.User, {
-  //       foreignKey: {
-  //         allowNull: true
-  //       }
-  //     });
-  //   };
+  Dog.associate = function(models) {
+    Dog.belongsTo(models.user, {
+      foreignKey: "username"
+    });
+  };
   return Dog;
 };
