@@ -17,7 +17,7 @@ var KilometersToMiles = require("kilometers-to-miles");
 module.exports = function(app, user) {
   //Getting the park data used by Google Maps App
   app.get("/api/parks", function(req, res) {
-    db.Parks.findAll({}).then(function(dbParks) {
+    db.parks.findAll({}).then(function(dbParks) {
       res.json(dbParks);
     });
   });
@@ -46,19 +46,21 @@ module.exports = function(app, user) {
 
   //Getting all dogs
   app.get("/api/dogs", function(req, res) {
-    db.Dog.findAll({}).then(function(dbDogs) {
+    db.dog.findAll({}).then(function(dbDogs) {
       res.json(dbDogs);
     });
   });
 
   app.get("/api/dogs/:id", function(req, res) {
-    db.Dog.findOne({
-      where: {
-        id: req.params.id
-      }
-    }).then(function(dbDog) {
-      res.json(dbDog);
-    });
+    db.dog
+      .findOne({
+        where: {
+          id: req.params.id
+        }
+      })
+      .then(function(dbDog) {
+        res.json(dbDog);
+      });
   });
 
   app.post("/api/parkSearch", function(req, res) {
@@ -71,48 +73,50 @@ module.exports = function(app, user) {
         obj[data[0]] = data[1];
       });
 
-      db.Parks.findAll({
-        where: {
-          [Op.or]: [obj]
-        }
-      }).then(function(dbParks) {
-        var zipCode = req.body.distanceObj.zipCode;
-
-        var distanceArr = [];
-
-        if (zipCode != "") {
-          var holder = 0;
-          for (var i = 0; i < dbParks.length; i++) {
-            var ktm = new KilometersToMiles();
-
-            if (dbParks[i].address == "") {
-              holder++;
-            }
-            if (dbParks[i].address !== "") {
-              distance.get(
-                {
-                  origin: zipCode,
-                  destination: dbParks[i].address
-                },
-                function(err, data) {
-                  if (err) return console.log(err);
-
-                  distanceArr.push(ktm.get(parseInt(data.distance)));
-
-                  if (distanceArr.length + holder == dbParks.length) {
-                    var parks = addDistance(distanceArr, dbParks);
-                    res.json(parks);
-                  }
-                }
-              );
-            }
+      db.parks
+        .findAll({
+          where: {
+            [Op.or]: [obj]
           }
-        } else {
-          res.json(dbParks);
-        }
-      });
+        })
+        .then(function(dbParks) {
+          var zipCode = req.body.distanceObj.zipCode;
+
+          var distanceArr = [];
+
+          if (zipCode != "") {
+            var holder = 0;
+            for (var i = 0; i < dbParks.length; i++) {
+              var ktm = new KilometersToMiles();
+
+              if (dbParks[i].address == "") {
+                holder++;
+              }
+              if (dbParks[i].address !== "") {
+                distance.get(
+                  {
+                    origin: zipCode,
+                    destination: dbParks[i].address
+                  },
+                  function(err, data) {
+                    if (err) return console.log(err);
+
+                    distanceArr.push(ktm.get(parseInt(data.distance)));
+
+                    if (distanceArr.length + holder == dbParks.length) {
+                      var parks = addDistance(distanceArr, dbParks);
+                      res.json(parks);
+                    }
+                  }
+                );
+              }
+            }
+          } else {
+            res.json(dbParks);
+          }
+        });
     } else {
-      db.Parks.findAll({}).then(function(dbParks) {
+      db.parks.findAll({}).then(function(dbParks) {
         var zipCode = req.body.distanceObj.zipCode;
         var distanceArr = [];
         if (zipCode != "") {
@@ -175,27 +179,43 @@ module.exports = function(app, user) {
       userId: req.user.id
     });
   });
-  //console.log(req.user.id);
-
-
-  // Posting new profiles through Dogs.js model
-  // app.post("/api/newDog", function(req, res) {
-  //   console.log("New Profile:  ");
-  //   console.log(req.body);
-  //   db.Dog.create({
-  //     name: req.body.dogName,
-  //     breed: req.body.dogBreed,
-  //     picture: req.body.dogPic,
-  //     gender: req.body.gender,
-  //     description: req.body.dogDescription,
-  //     likes_dogs: req.body.otherDogs,
-  //     likes_people: req.body.kids
-  //   });
 
   app.post("/picupload", function(req, res) {
     if (req.files) {
       console.log(req.files);
     }
+  });
 
+  app.put("/api/addDogToPark/:parkid/:dogid", function(req, res) {
+    console.log(req.params.dogId, req.params.parkid);
+    db.dog
+      .update(
+        { parkId: req.params.parkid },
+        { where: { id: req.params.dogid } }
+      )
+      .then(function(dbDogs) {
+        res.json(dbDogs);
+      });
+  });
+
+  //Find all the dogs in a park
+  app.get("/api/dogsInPark/:parkid", function(req, res) {
+    db.dog
+      .findAll({
+        where: { parkId: req.params.parkid }
+      })
+      .then(function(dbDog) {
+        res.json(dbDog);
+      });
+  });
+
+  app.get("/api/getUsersDogs/:userid", function(req, res) {
+    db.dog
+      .findAll({
+        where: { userId: req.params.userid }
+      })
+      .then(function(dbDogs) {
+        res.json(dbDogs);
+      });
   });
 };
