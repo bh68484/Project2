@@ -45,7 +45,7 @@
     </nav>
 
     <!-- main main -->
-    <div class="container">
+    <div id='searchFunctions' class="container">
         <div class="section no-pad-bot" id="index-banner">
             <h2 class="header center orange-text">Find a Park</h2>
         </div>
@@ -108,7 +108,7 @@
                         <br>
                         <br>
                         <div class="row center">
-                            <a id="parkSearch" class="waves-effect waves-light btn modal-trigger center" href="#modal1">Search</a>
+                            <a id="parkSearch" class="waves-effect waves-light btn modal-trigger center">Search</a>
                         </div>
 
                     </form>
@@ -130,9 +130,45 @@
     </div>
 
     <!-- Modal Structure -->
-    <div id="modal1" class="modal">
+    <div id="resultsContainer">
         <div id="results" class="container"></div>
     </div>
+
+    <div id="modal1" class="modal">         
+        <div class="modal-content">             
+            <h4 class="center-align">Selected Park</h4>             
+            <h5 class="center-align">Dogs at this Park</h5>             
+            <br>             
+            <br>             
+            <div class="row">                 
+                <div class="container center-align col s6">                     
+                    <h5 class="center-align">Dogs There Now</h5>                     
+                    <br>                     
+                    <div class="chip">                         
+                        <img src="./images/dog1.jpg" alt="Dog Chip"> Harris                    
+                    </div>                     
+                    <div class="chip">                         
+                        <img src="./images/dog2.jpg" alt="Dog Chip"> Rusty                     
+                    </div>                     
+                    <div class="chip">                         
+                        <img src="./images/dog3.jpg" alt="Dog Chip"> Chewie                     
+                    </div>                 
+                </div>                 
+                <div class="col s6">                     
+
+                    <h5 class="center-align">Select Dogs to Take</h5>                     
+                    <div id="dogsToTake">                     
+                    </div>                 
+                </div>             
+            </div>         
+        </div>         
+        <div class="modal-footer">             
+            <button class="btn waves-effect waves-light" type="submit" name="action" id="letsGo">Let's Go!                 
+                <i class="material-icons right">nature_people</i>             
+            </button>         
+        </div>     
+    </div>
+
     <footer id="footer1" class="page-footer footer-fixed light-green lighten-1 " style="background-image:url(https://images.clipartuse.com/44e37483d02ea0cfe67a9a5f035c485c_grass-clipart-transparent-grass-clipart-free-clip-art-imagespng-_3788-974.png) ">
         <div class="container ">
             <div class="row ">

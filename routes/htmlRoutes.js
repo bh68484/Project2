@@ -26,4 +26,8 @@ module.exports = function(app) {
       res.render("dogs", { dogs: data });
     });
   });
+
+  app.get("/findPark2", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/findPark2.html"));
+  });
 };
