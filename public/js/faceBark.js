@@ -35,6 +35,8 @@ $("#submit").click(function() {
   console.log(dogObject);
   $.post("/api/newDog", dogObject).then(function(data) {
     console.log(data);
+
+    res.render("dashboard");
   });
 
   //dogPicture = null;
