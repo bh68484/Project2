@@ -4,7 +4,7 @@ $("#parkButton").click(function(username, currentPark) {
   $.get("/api/dogs", function(req, res) {
     db.Dogs.findAll({
       where: {
-        username: username
+        userId: req.user.id
       }
     }).then(function(dbDogs) {
       console.log(dbDogs);
