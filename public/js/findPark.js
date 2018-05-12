@@ -1,7 +1,18 @@
-console.log("findPark.js working");
-var currentPark = $("#parkButton").attr("value");
+$(document).ready(function() {
+  localStorage.removeItem("currentPark");
+});
 
-$("#parkButton").click(function(username) {
+console.log("findPark.js is working");
+var currentPark;
+// console.log(currentPark);
+
+$("body").on("click", "#parkButton", function() {
+  console.log("btn click");
+  var isStored = localStorage.getItem("currentPark");
+  if (isStored != null) {
+    localStorage.removeItem("currentPark");
+  }
+  currentPark = this.value;
   console.log(currentPark);
   localStorage.setItem("currentPark", currentPark);
   $.get("/api/parks").then(function(dbParks) {
