@@ -4,7 +4,7 @@ var db = require("../models");
 const Sequelize = require("sequelize");
 
 // Routes
-module.exports = function(app) {
+module.exports = function(app, user) {
   // Each of the below routes just handles the HTML page that the user gets sent to.
 
   // index route loads view.html
@@ -25,6 +25,15 @@ module.exports = function(app) {
     db.dog.findAll({}).then(function(data) {
       res.render("dogs", { dogs: data });
     });
+    db.dog
+      .findAll({
+        where: {
+          userid: req.user.id
+        }
+      })
+      .then(function(data) {
+        res.render("dogs", { mydogs: data });
+      });
   });
 
   app.get("/findPark2", function(req, res) {

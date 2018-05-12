@@ -209,10 +209,11 @@ module.exports = function(app, user) {
       });
   });
 
-  app.get("/api/getUsersDogs/:userid", function(req, res) {
+  app.get("/api/getUsersDogs/", function(req, res) {
+    console.log("Gettting into getUsersDogs");
     db.dog
       .findAll({
-        where: { userId: req.params.userid }
+        where: { userId: req.user.id }
       })
       .then(function(dbDogs) {
         res.json(dbDogs);

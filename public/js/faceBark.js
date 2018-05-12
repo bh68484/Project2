@@ -77,4 +77,9 @@ $(document).ready(function() {
     });
     console.log(dogObject);
   });
+
+  // $.get("/api/getUsersDogs", function(data) {
+  //   res.render("dogs", { mydogs: data });
+  //   console.log(data);
+  // });
 });
