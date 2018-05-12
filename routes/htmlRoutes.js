@@ -22,9 +22,14 @@ module.exports = function(app, user) {
 
   //Renders a handlebars page with a list of all dogs.
   app.get("/dogs", function(req, res) {
+    console.log("user Id:", req.user.id);
     db.dog.findAll({}).then(function(data) {
       res.render("dogs", { dogs: data });
     });
+  });
+
+  app.get("/mydogs", function(req, res) {
+    console.log("user Id:", req.user.id);
     db.dog
       .findAll({
         where: {
@@ -32,10 +37,10 @@ module.exports = function(app, user) {
         }
       })
       .then(function(data) {
-        res.render("dogs", { mydogs: data });
+        console.log(data);
+        res.render("mydogs", { mydogs: data });
       });
   });
-
   app.get("/findPark2", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/findPark2.html"));
   });
