@@ -10,3 +10,4 @@ $(document).ready(function(username) {
     console.log(dbDogs);
   });
 });
+console.log("done");
