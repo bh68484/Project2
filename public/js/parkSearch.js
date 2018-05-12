@@ -1,6 +1,7 @@
 
 $(document).ready(function() {
 
+    var parkObj = {};
     var choiceArr = ["#dogPark", "#greenwayAcess", "#walkingTrails", "#restrooms", "#field"];
 
     $(document).on('click','#parkSearch', function(event){
@@ -65,25 +66,25 @@ $(document).ready(function() {
 
                         var park = $("<div class='park'>")
 
-                        var name = $("<h4>");
-                        name.append(i+1 + '. ' + returnedData[i].name);
+                        var name = $("<h4 id='name"+i+"'>");
+                        name.append(returnedData[i].name);
 
-                        var address = $("<p>");
-                        address.append("- Address: " + returnedData[i].address);
+                        var address = $("<p id='address:"+i+"'>");
+                        address.append("Address: " + returnedData[i].address);
 
-                        var dogPark = $("<li>");
+                        var dogPark = $("<li id='dogPark:"+i+"'>");
                         dogPark.append("- DogPark: " + returnedData[i].dogpark);
 
-                        var restroom = $("<li>");
+                        var restroom = $("<li id='restroom:"+i+"'>");
                         restroom.append("- Restrooms: " + returnedData[i].restrooms);
 
-                        var greenway = $("<li>");
+                        var greenway = $("<li id='greenway:"+i+"'>");
                         greenway.append("- GreenwayAccess: " + returnedData[i].greenwayAcess);
 
-                        var field = $("<li>");
+                        var field = $("<li id='field:"+i+"'>");
                         field.append("- Mulitpurpose Field: " + returnedData[i].field);
 
-                        var trails = $("<li>");
+                        var trails = $("<li id='trails:"+i+"'>");
                         trails.append("- Walking Trails: " + returnedData[i].walkingTrails);
 
                         var list = $("<ul class='container'>");
@@ -92,7 +93,7 @@ $(document).ready(function() {
                         var info = $("<div id='info' class=''>");
                         info.append(name, address, list);
 
-                        var parkbtn = $("<button class='waves-effect waves-light btn' id='parkButton'>");
+                        var parkbtn = $("<button class='waves-effect waves-light btn trigger' id='"+i+"'>");
                         parkbtn.append("Go To Park");
 
                         var btnDiv = $("<div id='buttonDiv' class='container modal-trigger' data-target='modal1' href='#modal1'>");
@@ -110,30 +111,45 @@ $(document).ready(function() {
  
         });
 
-$("#buttonDiv").click(function(username) {
-  $.get("/api/dogs", function(req, res) {
-    db.Dogs.findAll({
-      where: {
-        username: username
-      }
-    }).then(function(dbDogs) {
-      console.log(dbDogs);
+ $(document).on('click', '#buttonDiv', function(username) {
+    console.log('clicked');
+    // console.log(userid);
+  $.get("/api/getUsersDogs", function(req, res) {
+    
+      console.log(req[0].name);
+      var dog = $("<div id='dogs'>");
+      var img = $("<img id='mydog' src='./images/dog4.jpg' alt='Dog Chip'>");
+      dog.append(img);
+      dog.append(req[0].name);
+      $("#dogsToTake").append(dog);
 
-      var newLine = $("<p>");
-      var newLabel = $("<label>");
-      var newInput = $("<input type='checkbox' />");
-      var newSpan = $("<span>" + dbDogs.name + "</span>");
-      newLabel.attr("for", dbDogs.name);
-      newInput.attr("id", dbDogs.name);
-
-      newInput.append(newSpan);
-      newLabel.append(newInput);
-      newLine.appendI(newLabel);
-
-      $("#dogsToTake").append(newLine);
-    });
   });
 });
+
+$(document).on('click', '.trigger', function() {
+   console.log('clicked');
+   console.log($(this).attr('id'));
+   var id = $(this).attr('id');
+   // console.log($('#' + id).text());
+   // console.log($('#name'+id).text());
+   parkObj.name = $('#name'+id).text();
+   // parkObj.address = $('#address:'+id).text();
+   // parkObj.dogpark = $('#dogpark:'+id).text();
+   // parkObj.restroom = $('#restroom:'+id).text();
+   // parkObj.greenway = $('#greenway:'+id).text();
+   // parkObj.field = $('#field:'+id).text();
+   // parkObj.trails = $('#trails:'+id).text();
+   console.log(parkObj);
+
+   var isStored = localStorage.getItem("currentPark");
+   console.log(isStored);
+      if (isStored != null) {
+        localStorage.removeItem("currentPark");
+      }
+
+    localStorage.setItem("currentPark", parkObj.name);
+});
+
 
 $("#letsGo").click(function(username) {
     console.log('clicked');
