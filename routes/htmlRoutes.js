@@ -22,16 +22,12 @@ module.exports = function(app) {
 
   //Renders a handlebars page with a list of all dogs.
   app.get("/dogs", function(req, res) {
-    db.Dog.findAll({}).then(function(data) {
-      res.render("dogs", { dogs: data });
-    });
+    res.render("dogs", { dogs: req.user });
   });
-
 
   app.get("/findPark2", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/findPark2.html"));
   });
 
   app.get("/dogs/:id", function(req, res) {});
-
 };

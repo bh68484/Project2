@@ -163,21 +163,25 @@ module.exports = function(app, user) {
   }
 
   // Posting new profiles through Dogs.js model
-  app.post("/api/newDog", function(req, res) {
+  app.post("/api/dogs", function(req, res) {
     console.log("New Profile:  ");
     console.log(req.body);
     console.log(req.user);
 
-    db.dog.create({
-      name: req.body.dogName,
-      breed: req.body.dogBreed,
-      picture: req.body.dogPic,
-      gender: req.body.gender,
-      description: req.body.dogDescription,
-      likes_dogs: req.body.otherDogs,
-      likes_people: req.body.kids,
-      userId: req.user.id
-    });
+    db.dogs
+      .create({
+        name: req.body.dogName,
+        breed: req.body.dogBreed,
+        picture: req.body.dogPic,
+        gender: req.body.gender,
+        description: req.body.dogDescription,
+        likes_dogs: req.body.otherDogs,
+        likes_people: req.body.kids,
+        userId: req.user.id
+      })
+      .then(function(dbDogs) {
+        res.json(dbDogs);
+      });
   });
 
   app.post("/picupload", function(req, res) {
