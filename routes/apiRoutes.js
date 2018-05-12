@@ -209,8 +209,8 @@ module.exports = function(app, user) {
       });
   });
 
-  app.get("/api/getUsersDogs/", function(req, res) {
-    console.log("Gettting into getUsersDogs");
+
+  app.get("/api/getUsersDogs", function(req, res) {
     db.dog
       .findAll({
         where: { userId: req.user.id }

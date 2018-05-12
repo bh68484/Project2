@@ -1,7 +1,9 @@
 console.log("findPark.js working");
-var currentUser = $("#parkButton").attr("value");
+var currentPark = $("#parkButton").attr("value");
 
-$("#parkButton").click(function(username, currentPark) {
+$("#parkButton").click(function(username) {
+  console.log(currentPark);
+  localStorage.setItem("currentPark", currentPark);
   $.get("/api/parks").then(function(dbParks) {
     console.log(dbParks);
     $(".dogsIn").empty();
