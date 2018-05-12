@@ -9,6 +9,11 @@
   top: 55px;
 }
 
+#parkList {
+  position: relative;
+  left: 50px;
+}
+
 #parkButton {
   position: relative;
   top: 30px;
