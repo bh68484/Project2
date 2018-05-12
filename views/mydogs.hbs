@@ -34,20 +34,17 @@
         </div>
     </nav>
 
-
     <h3>My Dogs</h3>
 
-    <!-- Pass in data from server.js -->
+
     <ul>
         {{#each mydogs}}
         <div class="row" data-target="modal1" href="#modal1">
             <ul class="collection" id="parkRow">
                 <div class="row">
                     <li class="collection-item">
-                        <img src={{{this.picture}}}>
-                        <a href={{{this.id}}}>
-                            <h4 id="dogName" class="col s4">{{this.name}}</h4>
-                        </a>
+
+                        <h4 id="dogName" class="col s4">{{this.name}}</h4>
 
                         <h5 class="col s2 center-align" id="parkAddress">Breed:</span> {{this.breed}}</h5>
 
@@ -59,40 +56,6 @@
     </ul>
 
 
-    <footer class="page-footer light-green lighten-1" style="background-image:url(https://images.clipartuse.com/44e37483d02ea0cfe67a9a5f035c485c_grass-clipart-transparent-grass-clipart-free-clip-art-imagespng-_3788-974.png)">
-        <div class="container">
-            <div class="row">
-                <div class="col l6 s12">
-                    <h5 class="white-text">FaceBark</h5>
-                    <p class="grey-text text-lighten-4">"Every snack you make, every meal you bake, every bite you take, i'll be watching you!" ~ Every dog ever
-                    </p>
-                </div>
-                <div class="col l4 offset-l2 s12">
-                    <h5 class="white-text">Links</h5>
-                    <ul>
-                        <li>
-                            <a class="grey-text text-lighten-3" href="http://www.cutestpaw.com/tag/dogs/">Dog Pictures</a>
-                        </li>
-                        <li>
-                            <a class="grey-text text-lighten-3" href="http://www.animalplanet.com/pets/dog-facts/?fact_id=113376">Dog Facts</a>
-                        </li>
-                        <li>
-                            <a class="grey-text text-lighten-3" href="http://www.discussdogs.com/forum/">Dog Forum</a>
-                        </li>
-                        <li>
-                            <a class="grey-text text-lighten-3" href="https://www.rover.com/">Dog Walking</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="footer-copyright">
-            <div class="container">
-                © 2018 Copyright Text
-                <a class="grey-text text-lighten-4 right" href="http://www.theuselessweb.com/">More Links</a>
-            </div>
-        </div>
-    </footer>
 
 
 
