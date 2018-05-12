@@ -30,16 +30,17 @@ module.exports = function(app, user) {
 
   app.get("/mydogs", function(req, res) {
     console.log("user Id:", req.user.id);
+
     db.dog
       .findAll({
-        where: {
-          userid: req.user.id
-        }
+        where: { userId: req.user.id }
       })
       .then(function(data) {
+
         console.log(data);
         res.render("mydogs", { mydogs: data });
       });
+    console.log(req.user.id);
   });
   app.get("/findPark2", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/findPark2.html"));

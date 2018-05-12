@@ -36,12 +36,14 @@
 
     <h3>My Dogs</h3>
 
+
     <ul>
         {{#each mydogs}}
         <div class="row" data-target="modal1" href="#modal1">
             <ul class="collection" id="parkRow">
                 <div class="row">
                     <li class="collection-item">
+
                         <h4 id="dogName" class="col s4">{{this.name}}</h4>
 
                         <h5 class="col s2 center-align" id="parkAddress">Breed:</span> {{this.breed}}</h5>
@@ -52,6 +54,7 @@
         </div>
         {{/each}}
     </ul>
+
 
 
 
