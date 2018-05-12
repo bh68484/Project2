@@ -209,6 +209,7 @@ module.exports = function(app, user) {
       });
   });
 
+
   app.get("/api/getUsersDogs", function(req, res) {
     db.dog
       .findAll({
