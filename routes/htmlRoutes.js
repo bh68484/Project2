@@ -25,15 +25,17 @@ module.exports = function(app, user) {
     db.dog.findAll({}).then(function(data) {
       res.render("dogs", { dogs: data });
     });
+  });
+
+  app.get("/mydogs", function(req, res) {
     db.dog
       .findAll({
-        where: {
-          userid: req.user.id
-        }
+        where: { userId: req.user.id }
       })
       .then(function(data) {
-        res.render("dogs", { mydogs: data });
+        res.render("mydogs", { dogs: data });
       });
+    console.log(req.user.id);
   });
 
   app.get("/findPark2", function(req, res) {
